@@ -23,6 +23,7 @@ public class UsaPractica3 {
         System.out.println(exc.toString());
     }
     
+    
     Data d1= new Data(2, 2, 20);
     Data d2= new Data(2, 2, 22);
     Data d3= new Data(2, 5, 21);
@@ -38,16 +39,7 @@ public class UsaPractica3 {
     System.out.println(i1.toString());
     System.out.print(ss1+"\n");
     s2.afegirIntercanvis(i1);
-    try{
-        u1.AfegirUsuari(s1);
-    }catch(AliesRepetit exc){
-        System.out.println(exc.toString());
-    }
-    try{
-        u1.AfegirUsuari(s2);
-    }catch(AliesRepetit exc){
-        System.out.println(exc.toString());
-    }
+
     
     System.out.println(u1.toString()+"\n");  // FALTA IMPRIIMIR LA LLISTA DE PRODUCTE I LA LLISTA DE INTERCANVIS
     
