@@ -3,7 +3,7 @@ package Dades.Llistes;
 import java.util.Arrays;
 
 import Dades.Classes.Usuari;
-import Exception.AliesRepetit;
+import Exceptions.AliesRepetit;
 public class LlistaUsuaris {
     
     private Usuari[] llista;

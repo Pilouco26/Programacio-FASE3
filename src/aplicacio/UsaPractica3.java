@@ -6,7 +6,7 @@ import Dades.Classes.Usuari;
 import Dades.Classes.Bens;
 import Dades.Classes.Servei;
 import Dades.Llistes.LlistaUsuaris;
-import Exception.AliesRepetit;
+import Exceptions.AliesRepetit;
 
 public class UsaPractica3 {
 
