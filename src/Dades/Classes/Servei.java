@@ -1,8 +1,11 @@
 package Dades.Classes;
 
+
+
 public final class Servei extends Producte{
 
     private Data datafi;
+    private boolean actiu;
 
 
     public Servei(String nom,String descripcio, int tipus, Data data, Data datafi)
@@ -21,9 +24,17 @@ public final class Servei extends Producte{
         return new Servei(getNom(), getDescripcio(), getTipus(), datafi, datafi);
     }
     
-    public boolean actiu(Data actual)
+    public void actiu(Data actual)
     {
-        if(datafi.esDataInferiorOigual(actual)) return true;
-        else return false;
+        if(actual.esDataInferiorOigual(datafi)&& data.esDataInferiorOigual(actual)) actiu = true;
+        else actiu= false;
+    }
+    public boolean getActiu()
+    {
+        return actiu;
+    }
+    public void setActiu(boolean actiu)
+    {
+        this.actiu= actiu;
     }
 }

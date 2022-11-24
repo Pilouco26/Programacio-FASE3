@@ -12,6 +12,11 @@ public class UsaPractica3 {
 
     public static void main(String[] args){
     
+
+
+    
+
+    
     Usuari s1 = new Usuari("ZZZZ","pilouco2602@gmail.com", 500);           //Proves
     Usuari s2 = new Usuari("F1","pilouco2602@gmail.com", 400);
     Usuari s3 = new Usuari("F1","pilouco2602@gmail.com", 400);

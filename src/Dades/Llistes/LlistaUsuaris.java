@@ -47,48 +47,6 @@ public class LlistaUsuaris {
         }
     }
 
-    public void ordenarLlista()
-    {
-        Usuari[] aux= new Usuari[nElem];
-        int i=0;
-        boolean diferent= false;
-        while(i<nElem)
-        {
-            
-
-            if(llista[nElem].getAlies().charAt(i) == (llista[nElem].getAlies().charAt(i))) 
-            {
-                int j=0;
-                while(j<llista[nElem].getAlies().length() &&  !diferent)
-                {
-                    if(llista[nElem].getAlies().charAt(j)>llista[nElem+1].getAlies().charAt(j)) 
-                    {
-                        aux[nElem] = llista[nElem];
-                        llista[nElem]= llista[nElem+1];
-                        llista[nElem+1] = aux[nElem];
-                        diferent = true; 
-
-                    }    
-                    else if(llista[nElem].getAlies().charAt(j)<llista[nElem+1].getAlies().charAt(j))  diferent = true;
-
-                    else j++;
-                }
-            }
-            
-            else  if(llista[nElem].getAlies().charAt(0)>llista[nElem+1].getAlies().charAt(0)) 
-            {
-                aux[nElem]= llista[nElem].copia();
-                llista[nElem]= llista[nElem+1].copia();
-                llista[nElem+1] = aux[nElem].copia();
-            }    
-
-            else i++;
-
-        }
-            
-    }
-    
-
 
 
     public int getnElem()

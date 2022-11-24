@@ -52,7 +52,7 @@ public class LlistaServeis {
 
         for(int i=0; i<nElem; i++)
         {
-            if(llista[i].actiu(actual)) 
+            if(llista[i].getActiu()) 
             {
                 aux.afegirServei(llista[i]);
             }

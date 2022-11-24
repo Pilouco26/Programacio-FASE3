@@ -1,18 +1,36 @@
 package aplicacio;
 
 import java.util.Scanner;
-
+import Dades.Classes.*;
+import Dades.Classes.Producte;
+import Dades.Classes.Servei;
+import Dades.Llistes.LlistaProductes;
 import Exception.ValorNoOk;
+
 public class ProgramaPrincipal {
     static Scanner teclat = new Scanner(System.in);
 
     public static void main(String[] args){
-    boolean sortir=false;
 
+    int linies=5;
+    boolean sortir=false;
+    Data d1= new Data(2, 5, 21);
+    Data d2= new Data(2, 2, 22);
+    Data actual= new Data(2, 5, 21);
+    Producte prova= new Servei("YY", "YY", 0, d1, d2);
+    ((Servei)prova).actiu(actual);
+    System.out.println(((Servei)prova).getActiu());
+    LlistaProductes p = new LlistaProductes(linies);
+    p.afegirProductes(prova);
+    Producte ñ = new Servei("4", "4", 0, d2, actual);
+    p.afegirProductes(ñ);
+    System.out.println(p.toString());
+    LlistaProductes a= p.ServeisActius();
+    System.out.println(a.toString());
     int limit1= 1;
     int limit2 =4;
     
-    System.out.println("Hola que tal broski.. etc etc i el menu\n");
+    System.out.println("    \n    [1] Consultar Llistes\n    [2] Intercanvis \n    [3] Usuari \n    [4] Sortir de l'aplicació\n");
     int menu = llegirEnter(limit1, limit2);
 
     while(!sortir) 
@@ -22,7 +40,7 @@ public class ProgramaPrincipal {
 
             case 1:             //Llistes
                 limit2=3;
-                System.out.println("Where u goin bih???");
+                System.out.println(" [1] Consultar totes les llistes\n [2] Serveis Actius\n [3] Bens disponibles");
                 Llistes(llegirEnter(limit1, limit2)); 
             
             case 2:             //intercanvis
@@ -34,6 +52,8 @@ public class ProgramaPrincipal {
 
 
             case 4:            //sortir
+
+            System.exit(0);
         }
     }
 
@@ -57,7 +77,9 @@ public class ProgramaPrincipal {
 
             case 2: 
 
-                //Serveis actius
+            
+           
+            
 
             case 3: 
 
