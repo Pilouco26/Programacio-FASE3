@@ -1,4 +1,4 @@
-
+package llisteso;
 //NO TÉ PITNA QUE S'UTILIZI 
 
 

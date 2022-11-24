@@ -1,6 +1,6 @@
 
 //NO TE PINTA QUE S'UTILZI 
-
+package llisteso;
 
 
 import Dades.Classes.Bens;
