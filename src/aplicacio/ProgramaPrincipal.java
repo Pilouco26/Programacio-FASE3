@@ -2,7 +2,7 @@ package aplicacio;
 
 import java.util.Scanner;
 
-import Exceptions.ValorNoOk;
+import Exception.ValorNoOk;
 public class ProgramaPrincipal {
     static Scanner teclat = new Scanner(System.in);
 
