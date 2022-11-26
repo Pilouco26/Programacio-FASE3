@@ -1,6 +1,7 @@
 package aplicacio;
 
 import java.util.Scanner;
+
 import Dades.Classes.*;
 import Dades.Llistes.LlistaProductes;
 import Exception.ValorNoOk;
@@ -12,6 +13,7 @@ public class ProgramaPrincipal {
 
     int linies=5;
     boolean sortir=false;
+    boolean tornar = false; 
     Data d1= new Data(2, 5, 21);
     Data d2= new Data(2, 2, 22);
     Data actual= new Data(2, 5, 21);
@@ -20,58 +22,108 @@ public class ProgramaPrincipal {
     System.out.println(((Servei)prova).getActiu());
     LlistaProductes p = new LlistaProductes(linies);
     p.afegirProductes(prova);
+
+    //Prova Serveis Actius
     Producte ñ = new Servei("4", "4", d2, actual);
     p.afegirProductes(ñ);
-    System.out.println(p.toString());
     LlistaProductes a= p.ServeisActius();
-    System.out.println(a.toString());
-    int limit1= 1;
-    int limit2 =4;
-    
+  
+
+    //Prova Bens actius
     Producte bProva = new Bens("Padre", "Padre", actual, 50, 20, 10, 35.2);
     //((Bens)bProva).Intercanviat();
+   
     p.afegirProductes(bProva);
-
     LlistaProductes B = p.BensActius();
 
-    System.out.println(B.toString());
+   
     
-    System.out.println("    \n    [1] Consultar Llistes\n    [2] Intercanvis \n    [3] Usuari \n    [4] Sortir de l'aplicació\n");
-    int menu = llegirEnter(limit1, limit2);
+    
 
     while(!sortir) 
     {
+        int menu=menu();
         switch(menu)
         {
 
             case 1:             //Llistes
-                limit2=3;
-                System.out.println(" [1] Consultar totes les llistes\n [2] Serveis Actius\n [3] Bens disponibles");
-                Llistes(llegirEnter(limit1, limit2)); 
+                
+                while(!tornar){
+                    
+                    
+                    switch(menuLlistes())
+                        {
+                            case 1:
+                            
+                            System.out.println(p.toString());
+                            System.out.println("\n\n");
+                            delay(2000);
+                            break;
+
+                            case 2: 
+
+                            System.out.println(a.toString());
+                            System.out.println("\n\n");
+                            delay(2000);
+
+                            break;
+
+                            case 3: 
+
+                            System.out.println(B.toString());
+                            System.out.println("\n\n");
+                            delay(2000);
+                            break; 
+                            
+                            case 4: 
+                            tornar=true;
+                            break; 
+                        }
+                }
+            
+            break;
             
             case 2:             //intercanvis
 
-
-
+            
+            break;
             case 3:             //usuari
 
 
-
+            break;
             case 4:            //sortir
 
             System.exit(0);
+            break; 
         }
     }
 
 
-
-
-
-
     }
 
 
-    private static void Llistes(int menu)
+    private static int menu()
+    {
+        int limit1 = 1;
+        int limit2 = 4;
+        System.out.println("\n\n\n\t\t\t\t\t[MENU PRNICPAL]    \n    [1] Consultar Llistes\n    [2] Intercanvis \n    [3] Usuari \n    [4] Sortir de l'aplicació");
+        int menu = llegirEnter(limit1, limit2);
+
+        return menu;
+    }
+
+    private static int menuLlistes()
+    {
+        int limit1=1;
+        int limit2 = 4;
+        System.out.println(" [1] Consultar totes les llistes\n [2] Serveis Actius\n [3] Bens disponibles\n [4] Tornar al menu principal");
+        
+
+        return llegirEnter(limit1, limit2); 
+        
+    }
+
+    /*private static void Llistes(int menu)
     {
         int limit1=1;
         int limit2 = 3;
@@ -86,15 +138,16 @@ public class ProgramaPrincipal {
             
            
             
-
+            break;
             case 3: 
 
                 //Bens disponibles
 
         }
-    }
+        
+    }*/
 
-    private static void TotesLlistes(int menu)
+    /*private static void TotesLlistes(int menu)
     {
 
         switch(menu) {
@@ -112,15 +165,15 @@ public class ProgramaPrincipal {
         }
 
 
-    }
+    }*/
 
     /**
      * funcio per tenir un delay, rep els segons per parametre
     * @param s --> segons que volem de retard
     */
-    public static void delay(int s) {						
+    public static void delay(int ms) {						
         try {
-        Thread.sleep(s * 1000);
+        Thread.sleep(ms);
         } catch (InterruptedException ex) {
         Thread.currentThread().interrupt();
         }
