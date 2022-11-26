@@ -2,8 +2,6 @@ package aplicacio;
 
 import java.util.Scanner;
 import Dades.Classes.*;
-import Dades.Classes.Producte;
-import Dades.Classes.Servei;
 import Dades.Llistes.LlistaProductes;
 import Exception.ValorNoOk;
 
@@ -17,18 +15,26 @@ public class ProgramaPrincipal {
     Data d1= new Data(2, 5, 21);
     Data d2= new Data(2, 2, 22);
     Data actual= new Data(2, 5, 21);
-    Producte prova= new Servei("YY", "YY", 0, d1, d2);
+    Producte prova= new Servei("YY", "YY", d1, d2);
     ((Servei)prova).actiu(actual);
     System.out.println(((Servei)prova).getActiu());
     LlistaProductes p = new LlistaProductes(linies);
     p.afegirProductes(prova);
-    Producte ñ = new Servei("4", "4", 0, d2, actual);
+    Producte ñ = new Servei("4", "4", d2, actual);
     p.afegirProductes(ñ);
     System.out.println(p.toString());
     LlistaProductes a= p.ServeisActius();
     System.out.println(a.toString());
     int limit1= 1;
     int limit2 =4;
+    
+    Producte bProva = new Bens("Padre", "Padre", actual, 50, 20, 10, 35.2);
+    //((Bens)bProva).Intercanviat();
+    p.afegirProductes(bProva);
+
+    LlistaProductes B = p.BensActius();
+
+    System.out.println(B.toString());
     
     System.out.println("    \n    [1] Consultar Llistes\n    [2] Intercanvis \n    [3] Usuari \n    [4] Sortir de l'aplicació\n");
     int menu = llegirEnter(limit1, limit2);

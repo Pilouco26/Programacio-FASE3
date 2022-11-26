@@ -26,6 +26,10 @@ public class LlistaProductes {
             {
                 ((Servei)llista[nElem]).setActiu(((Servei)p).getActiu());
             }
+            if(p instanceof Bens)
+            {
+                ((Bens)llista[nElem]).setIntercanvi(((Bens)p).getIntercanvi());
+            }
             nElem++;
         }
         
@@ -66,16 +70,41 @@ public class LlistaProductes {
         return SerActiu;
     }
 
+    public LlistaProductes BensActius()
+    {
+        LlistaProductes BeActiu= new LlistaProductes(getIntercanviables());
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i] instanceof Bens && !((Bens)llista[i]).getIntercanvi())
+            {
+                BeActiu.afegirProductes(llista[i]);
+            }
+        }
+
+        return BeActiu;
+    }
+
     public int getActius()
     {
         int mida=0;
         for(int i=0; i<nElem; i++)
         {
-            if(llista[i] instanceof Servei)
+            if(llista[i] instanceof Servei && ((Servei)llista[i]).getActiu())
             {
                 mida++;
             }
         }
+        return mida;
+    }
+    public int getIntercanviables()
+    {
+        int mida =0;
+
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i] instanceof Bens && !((Bens)llista[i]).getIntercanvi()) mida++;
+        }
+
         return mida;
     }
     @Override

@@ -7,8 +7,7 @@ package Dades.Classes;
 public abstract class Producte {    //no volem obtenir fer res
 
     protected  String nom;
-    protected  String descripcio;
-    protected  int tipus;                //0   bens 1 serveis
+    protected  String descripcio;               //0   bens 1 serveis
     protected  Data data; 
 
 
@@ -16,11 +15,10 @@ public abstract class Producte {    //no volem obtenir fer res
      * 
      * 
      */
-    public Producte(String nom, String descripcio, int tipus, Data data)
+    public Producte(String nom, String descripcio, Data data)
     {
         this.nom=nom;
         this.descripcio = descripcio;
-        this.tipus = tipus;
         this.data = data;
     }
 
@@ -34,11 +32,6 @@ public abstract class Producte {    //no volem obtenir fer res
         return descripcio;
     }
 
-    public int getTipus()
-    {
-        return tipus;
-    }
-
     public Data getData()
     {
         return data;
@@ -49,6 +42,6 @@ public abstract class Producte {    //no volem obtenir fer res
     @Override
     public String toString(){
 
-        return ("NOM: "+getNom()+", Descripció: "+getDescripcio()+", Tipus: "+getTipus()+", Data: "+getData().toString());
+        return ("NOM: "+getNom()+", Descripció: "+getDescripcio()+", Data: "+getData().toString());
     }
 }

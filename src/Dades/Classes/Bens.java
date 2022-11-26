@@ -19,9 +19,9 @@ public final class Bens extends Producte {
      * @param fons: fons del bé
      * @param pes: pes del bé
      */
-    public Bens(String nom, String descripcio, int tipus, Data data, double amplada, double alçada, double fonsCM, double pesKG)
+    public Bens(String nom, String descripcio, Data data, double amplada, double alçada, double fonsCM, double pesKG)
     {
-        super(nom, descripcio, tipus, data);
+        super(nom, descripcio, data);
         this.ampladaCM = amplada;
         this.alçadaCM = alçada;
         this.fonsCM = fonsCM;
@@ -82,12 +82,17 @@ public final class Bens extends Producte {
     public void Intercanviat(){
         intercanvi = true;
     }
+
+    public void setIntercanvi(boolean intercanvi)
+    {
+        this.intercanvi = intercanvi;
+    }
     /**
      * Copia un bé
      * @return bé copiat
      */
     public Bens copia(){
-        return new Bens(getNom(), getDescripcio(), getTipus(), getData(), ampladaCM, alçadaCM, fonsCM, pesKG);
+        return new Bens(getNom(), getDescripcio(), getData(), ampladaCM, alçadaCM, fonsCM, pesKG);
     }
 
 

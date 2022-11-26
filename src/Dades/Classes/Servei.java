@@ -8,9 +8,9 @@ public final class Servei extends Producte{
     private boolean actiu;
 
 
-    public Servei(String nom,String descripcio, int tipus, Data data, Data datafi)
+    public Servei(String nom,String descripcio, Data data, Data datafi)
     {
-        super(nom, descripcio, tipus, data);
+        super(nom, descripcio, data);
         this.datafi= datafi;
     }
 
@@ -21,7 +21,7 @@ public final class Servei extends Producte{
 
     public Servei copia()
     {
-        return new Servei(getNom(), getDescripcio(), getTipus(), datafi, datafi);
+        return new Servei(getNom(), getDescripcio(), datafi, datafi);
     }
     
     public void actiu(Data actual)

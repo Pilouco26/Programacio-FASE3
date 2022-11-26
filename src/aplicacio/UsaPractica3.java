@@ -32,8 +32,8 @@ public class UsaPractica3 {
     Data d1= new Data(2, 2, 20);
     Data d2= new Data(2, 2, 22);
     Data d3= new Data(2, 5, 21);
-    Servei ss1 = new Servei("LA 33", "yessir", 1, d1, d3);
-    Bens b2 = new Bens("PADREADA", "guapa", 0, d2, 20, 15, 10, 60);
+    Servei ss1 = new Servei("LA 33", "yessir", d1, d3);
+    Bens b2 = new Bens("PADREADA", "guapa", d2, 20, 15, 10, 60);
     s1.afegirProductes(ss1);
     s1.afegirProductes(ss1);
     s1.afegirProductes(ss1);
