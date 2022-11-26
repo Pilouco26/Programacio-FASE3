@@ -43,6 +43,7 @@ public class ProgramaPrincipal {
     while(!sortir) 
     {
         int menu=menu();
+        tornar=false;
         switch(menu)
         {
 
@@ -54,10 +55,39 @@ public class ProgramaPrincipal {
                     switch(menuLlistes())
                         {
                             case 1:
-                            
-                            System.out.println(p.toString());
-                            System.out.println("\n\n");
-                            delay(2000);
+
+                            while(!tornar){
+
+                                    switch(seleccioLlistes())
+                                    {
+                                        case 1: 
+                                            System.out.println("Llista Intercanvis");
+                                        break;
+
+                                        case 2: 
+                                            System.out.println("Llista Productes:\n "+p.toString());
+
+                                        break;
+
+                                        case 3: 
+                                            System.out.println("Llista Serveis");
+                                        break;
+
+                                        case 4: 
+                                            System.out.println("Llista Bens");
+                                        break; 
+
+                                        case 5: 
+                                            System.out.println("Llista Usuaris");
+                                        break; 
+
+                                        case 6:
+
+                                            tornar = true;
+                                        break;
+                                    }
+                                }
+                          
                             break;
 
                             case 2: 
@@ -121,6 +151,14 @@ public class ProgramaPrincipal {
 
         return llegirEnter(limit1, limit2); 
         
+    }
+    private static int seleccioLlistes()
+    {
+        int limit1= 1;
+        int limit2 =6;
+        System.out.println(" [1] Consultar Intercanvis\n [2] Consultar Productes\n [3] Consultar Serveis\n [4] Consultar Bens\n [5] Consultar Usuaris\n [6] Tornar al menu principal");
+
+        return llegirEnter(limit1, limit2);
     }
 
     /*private static void Llistes(int menu)
