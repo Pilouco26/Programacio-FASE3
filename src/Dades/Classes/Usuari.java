@@ -96,7 +96,7 @@ public final class  Usuari implements Serializable{            //final pq no vol
 
     public String toString()
     {
-        return "Usuari [Alies: "+alies+" Email: "+email+" Codi Postal: "+cp+" Numero de productes: "+numProductes+" Numeros d'intercanvis: "+numIntercanvis+" Productes: "+Arrays.toString(productes)+" Intercanvis" +Arrays.toString(intercanvis)+"  ]\n";
+        return "Alies: "+alies+" Email: "+email+" Codi Postal: "+cp+" Numero de productes: "+numProductes+" Numeros d'intercanvis: "+numIntercanvis+" Productes: "+Arrays.toString(productes)+" Intercanvis" +Arrays.toString(intercanvis)+" \n";
     }
    
 

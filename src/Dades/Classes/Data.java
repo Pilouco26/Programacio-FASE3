@@ -230,8 +230,9 @@ public class Data {
 	}
 	
 	public String toString() {
-		return("DATA => dia "+dia+" mes "+mes+" any "+any);
+		return(dia+"/"+mes+"/"+any);
 	}
+
 
 	public Data copia() {
 		return new Data(dia, mes, any);

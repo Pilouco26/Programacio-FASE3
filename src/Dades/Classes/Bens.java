@@ -95,5 +95,10 @@ public final class Bens extends Producte {
         return new Bens(getNom(), getDescripcio(), getData(), ampladaCM, alçadaCM, fonsCM, pesKG);
     }
 
+    public String toStringMaco()
+    {
+        return "Nom: +"+nom+", Descripció: "+descripcio+" Data inicial: "+data;
+    }
+
 
 }

@@ -44,4 +44,6 @@ public abstract class Producte {    //no volem obtenir fer res
 
         return ("NOM: "+getNom()+", Descripció: "+getDescripcio()+", Data: "+getData().toString());
     }
+
+    public abstract String toStringMaco();
 }

@@ -1,6 +1,6 @@
 package Dades.Llistes;
 
-import java.util.*;
+
 import Dades.Classes.Bens;
 import Dades.Classes.Producte;
 import Dades.Classes.Servei;
@@ -110,22 +110,18 @@ public class LlistaProductes {
     @Override
     public String toString() {
 
-        if (nElem == 0)
-            return "null";
-
-        int iMax = llista.length - 1;
-        if (iMax == -1)
-            return "[]";
-
+        if(nElem==0)
+        {
+            return "No hi ha cap element en aquesta llista.";
+        }
         StringBuilder b = new StringBuilder();
         
-        for (int i = 0; i<nElem; i++) {
+        for (int i = 0; ; i++) {
             b.append(String.valueOf(llista[i]+"\n"));
-            if (i == iMax)
-                return b.append(' ').toString();
+            if (i == nElem-1)
+                return b.toString();
             
-        
         }
-        return null;
+        
     }
 }

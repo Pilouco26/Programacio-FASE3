@@ -37,4 +37,14 @@ public final class Servei extends Producte{
     {
         this.actiu= actiu;
     }
+    @Override
+    public String toString()
+    {
+        return nom+";"+descripcio+";"+data+";"+datafi;
+    }
+   
+    public String toStringMaco()
+    {
+        return "Nom: "+nom+", Descripció: "+descripcio+", Data inicial: "+data+", Data final: "+datafi;
+    }
 }
