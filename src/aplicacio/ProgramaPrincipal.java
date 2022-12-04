@@ -34,6 +34,7 @@ public class ProgramaPrincipal {
     //((Bens)bProva).Intercanviat();
    
     p.afegirProductes(bProva);
+    p.afegirProductes(bProva);
     LlistaProductes B = p.BensActius();
 
    
@@ -65,8 +66,8 @@ public class ProgramaPrincipal {
                                         break;
 
                                         case 2: 
-                                            System.out.println("Llista Productes:\n "+p.toString());
-
+                                            
+                                        System.out.println("Llista Productes:\n "+p.toString());
                                         break;
 
                                         case 3: 
@@ -114,8 +115,53 @@ public class ProgramaPrincipal {
             break;
             
             case 2:             //intercanvis
-
             
+                while(!tornar)
+                {
+                    switch(menuIntercanvis())
+                    {
+                        case 1:
+
+                        System.out.println(" [1] Afegir Bé\n [2] Afegir Petició d'intercanvi\n [3] Afegir Servei\n");
+                        int num =llegirEnter(1, 3);
+
+                        String nom = llegirString();
+                        String Descripció = llegirString();
+                        Producte nou = new Servei(nom, Descripció, d2, actual);
+                        ((Servei)nou).actiu(actual);
+                        p.afegirProductes(bProva);
+
+
+                        break;
+
+
+                        case 2: 
+
+                        break;
+
+                        case 3: 
+
+                        break;
+
+
+                        case 4: 
+
+                        break;
+
+                        case 5: 
+
+                        break; 
+
+                        case 6: 
+
+                        tornar= true;
+
+                        break;
+                    }
+                }
+                
+            
+
             break;
             case 3:             //usuari
 
@@ -152,12 +198,29 @@ public class ProgramaPrincipal {
         return llegirEnter(limit1, limit2); 
         
     }
+
     private static int seleccioLlistes()
     {
         int limit1= 1;
         int limit2 =6;
         System.out.println(" [1] Consultar Intercanvis\n [2] Consultar Productes\n [3] Consultar Serveis\n [4] Consultar Bens\n [5] Consultar Usuaris\n [6] Tornar al menu principal");
 
+        return llegirEnter(limit1, limit2);
+    }
+
+    private static String llegirString()
+    {
+        String nom = teclat.nextLine();
+
+        return nom;
+    }
+
+    private static int menuIntercanvis()
+    {
+        int limit1= 1;
+        int limit2= 6;
+
+        System.out.println("\t\t\t  [INTERCANVIS] \n\n [1] Afegir Productes o intercanvis\n [2] Aceptar/Refusar Intercanvi\n [3] Donar de Baixa Usuari/Bé\n [4] Mostrar Peticions\n [5] Servei més popular\n [6] Tornar al menu principal");
         return llegirEnter(limit1, limit2);
     }
 

@@ -47,6 +47,10 @@ public class LlistaUsuaris {
         }
     }
 
+    public Usuari StoreData(int posicio)
+    {
+        return llista[posicio];
+    }
 
 
     public int getnElem()
@@ -54,8 +58,25 @@ public class LlistaUsuaris {
         return nElem;
     }
 
+    @Override
     public String toString() {
 
-        return Arrays.toString(llista);
-     }
+        if (nElem == 0)
+            return "null";
+
+        int iMax = llista.length - 1;
+        if (iMax == -1)
+            return "[]";
+
+        StringBuilder b = new StringBuilder();
+        
+        for (int i = 0; i<nElem; i++) {
+            b.append(String.valueOf(llista[i]+"\n"));
+            if (i == iMax)
+                return b.append(' ').toString();
+            
+        
+        }
+        return null;
+    }
 }

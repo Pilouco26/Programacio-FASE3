@@ -1,6 +1,7 @@
 package Dades.Classes;
+import java.io.Serializable;
 import java.util.Arrays;
-public final class  Usuari {            //final pq no volem crear subtipus
+public final class  Usuari implements Serializable{            //final pq no volem crear subtipus
     private String alies; //No es pot repetir
     private String email;
     private int cp;
