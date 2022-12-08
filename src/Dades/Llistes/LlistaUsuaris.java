@@ -45,6 +45,27 @@ public class LlistaUsuaris {
            
         }
     }
+    public Usuari TrobaUsuari(String usuari)
+    {
+        boolean trobat= false;
+        int i=0;       
+        while(i<nElem && !trobat)
+        {
+            if(llista[i].getAlies().equals(usuari))
+            {   
+                trobat = true;
+                
+            }
+            else i++;
+        }
+        if(trobat) return llista[i];                                        //ENRECORDARSE DE PPOSAR LO QUE NO ES DEL CONSTRUCTOR
+        else return null;
+    }
+
+
+
+
+
 
     public Usuari StoreData(int posicio)
     {

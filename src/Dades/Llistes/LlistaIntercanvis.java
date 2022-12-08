@@ -31,12 +31,16 @@ public class LlistaIntercanvis {
     @Override
     public String toString() {
 
+        if(nElem==0)
+        {
+            return "No hi ha cap element en aquesta llista.";
+        }
         StringBuilder b = new StringBuilder();
         
         for (int i = 0; ; i++) {
             b.append(String.valueOf(llista[i]+"\n"));
             if (i == nElem-1)
-                return b.append(' ').toString();
+                return b.toString();
             
         }
         

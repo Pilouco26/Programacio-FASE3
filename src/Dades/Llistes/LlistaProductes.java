@@ -148,6 +148,18 @@ public class LlistaProductes {
         return mida;
     }
 
+    public Producte TrobaCodi(String codi)
+    {
+        boolean trobat = false;
+        int i=0; 
+        while (i<nElem && !trobat)
+        {
+            if(llista[i].getNom().equals(codi)) trobat = true;
+            else i++;
+        }
+        if(trobat) return llista[i];                                    //ENRECORDARSE DE PPOSAR LO QUE NO ES DEL CONSTRUCTOR
+        else return null;
+    }
 
 
     public int getnElem()

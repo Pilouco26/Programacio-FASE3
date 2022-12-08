@@ -89,6 +89,11 @@ public final class Bens extends Producte {
     {
         this.intercanvi = intercanvi;
     }
+
+    public void setData(Data data)
+    {
+        this.Data_intercanvi = data;
+    }
     /**
      * Copia un bé
      * @return bé copiat
@@ -104,7 +109,7 @@ public final class Bens extends Producte {
     @Override
     public String toString()
     {
-        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+Data_intercanvi;
+        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi+";"+Data_intercanvi;
     }
 
 }

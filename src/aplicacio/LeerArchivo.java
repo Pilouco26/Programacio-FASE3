@@ -2,6 +2,7 @@ package aplicacio;
 import java.io.*;
 import java.util.*;
 import Dades.Classes.*;
+import Dades.Llistes.LlistaIntercanvis;
 import Dades.Llistes.LlistaProductes;
 import Dades.Llistes.LlistaUsuaris;
 import Exception.AliesRepetit;
@@ -45,13 +46,15 @@ public class LeerArchivo {
         /*OBTENIR LES LINIES DEL FITXER AMB CLASSE SCANNER */
         
         LlistaProductes s1  = new LlistaProductes(4000);
-
-                                                          //EL TO STRING S'HA DE FER MACO
-        LlegirServeis(s1);
+        LlistaIntercanvis i1 = new LlistaIntercanvis(4000);
+                                                      //EL TO STRING S'HA DE FER MACO
+        LlegirServeis(s1);  
         LlegirBens(s1);
+        LlegirIntercanvis(i1, s1, l2);
     
         WriteS(s1);
         WriteB(s1);
+        WriteI(i1);
     }
 
 
@@ -92,6 +95,22 @@ public class LeerArchivo {
         fileS.close();   
     }
 
+    public static void LlegirIntercanvis(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris u1) throws FileNotFoundException{
+
+        File fitxerS = new File("intercanvis.txt");
+        Scanner fileS = new Scanner(fitxerS);
+        while(fileS.hasNextLine())
+        {
+            
+            Intercanvi I1 = ReadI(fileS, p1, u1);
+            i1.AfegirIntercanvi(I1);                                //NO AFEGEIX CAP PRODUCTE
+            
+        }
+        fileS.close();   
+
+
+    }
+
 
     public static Producte AfegirProducteS()
     {
@@ -119,9 +138,10 @@ public class LeerArchivo {
     public static Producte ReadP(Scanner fileS, int tipus)
     {
         String nom, descripcio, servei;
-        int dia1, mes1, any1, dia2, mes2, any2;
+        int dia1, mes1, any1, dia2, mes2, any2, dia3, mes3, any3;
         Data data, datafi;
         double amplada, alçada, fons, pes;
+        Boolean intercanviat;
 
         servei = fileS.nextLine();
             StringTokenizer Producte = new StringTokenizer(servei, ";");
@@ -151,8 +171,21 @@ public class LeerArchivo {
                 alçada =  Double.parseDouble(Producte.nextToken());
                 fons =    Double.parseDouble(Producte.nextToken());
                 pes  =    Double.parseDouble(Producte.nextToken());
+                intercanviat = Boolean.parseBoolean(Producte.nextToken());
+                Producte Be= new Bens(nom, descripcio, data, amplada, alçada, fons, pes);
+                ((Bens)Be).setIntercanvi(intercanviat);
+                if(intercanviat){
 
-                return new Bens(nom, descripcio, data, amplada, alçada, fons, pes);
+                    StringTokenizer data3 = new StringTokenizer(Producte.nextToken(), "/");
+                    dia3 = Integer.parseInt(data3.nextToken());
+                    mes3 = Integer.parseInt(data3.nextToken());
+                    any3 = Integer.parseInt(data3.nextToken());
+
+                    datafi = new Data(dia3, mes3, any3);
+                    ((Bens)Be).setData(datafi);
+                }
+
+                return Be;
 
             }
                        //IF HAS NEXT TOKEN PER BENS
@@ -208,7 +241,7 @@ public class LeerArchivo {
         File fitxerSC = new File("bens.txt");
         FileWriter fw = new FileWriter(fitxerSC);
         bw = new BufferedWriter(fw);
-        bw.write(s1.GetBens().toString());                                    /* S'HA D'ESCRIURE NOMÉS LA MERDA DELS SERVEIS */
+        bw.write(s1.GetBens().toString());                                    
         System.out.println("Bens escrits!");
 
         }catch (IOException ioe) {
@@ -226,30 +259,64 @@ public class LeerArchivo {
         }
     }
 
-    public void ReadI(Scanner FileI)
+    public static void WriteI(LlistaIntercanvis i1)
+    {
+        BufferedWriter bw = null;
+        try{    
+        File fitxerSC = new File("intercanvis.txt");
+        FileWriter fw = new FileWriter(fitxerSC);
+        bw = new BufferedWriter(fw);
+        bw.write(i1.toString());                                   
+        System.out.println("Intercanvis escrits!");
+
+        }catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+         finally
+         { 
+            try{
+                if(bw!=null)
+                bw.close();
+            }catch(Exception ex){
+                
+                System.out.println("Error in closing the BufferedWriter"+ex);
+            }
+        }
+    }
+
+    public static Intercanvi ReadI(Scanner FileI, LlistaProductes p1, LlistaUsuaris u1)
     {
         int codi, ivaloracio, ovaloracio;
         boolean trato, resposta;
-        Usuari interessat, contesta;
-        Producte demanat, oferit;
+        String interessat, contesta;
+        String demanat, oferit;
+        Usuari interessat2, contesta2;
+        Producte demanat2, oferit2;
 
-        int cp;
-        String Alies, email; 
        
         String intercanvis = FileI.nextLine();
 
         StringTokenizer intercanvi = new StringTokenizer(intercanvis, ";");
         codi = Integer.parseInt(intercanvi.nextToken());
-        Alies = intercanvi.nextToken();
-        email = intercanvi.nextToken();
-        cp = Integer.parseInt(intercanvi.nextToken());
-        interessat = new Usuari(Alies, email, cp);
+        interessat = intercanvi.nextToken();
+        contesta = intercanvi.nextToken();
+        demanat = intercanvi.nextToken();
+        oferit = intercanvi.nextToken();
+        resposta = Boolean.parseBoolean(intercanvi.nextToken());
+        trato = Boolean.parseBoolean(intercanvi.nextToken());
+        ivaloracio = Integer.parseInt(intercanvi.nextToken());
+        ovaloracio = Integer.parseInt(intercanvi.nextToken());
+        interessat2 = u1.TrobaUsuari(interessat);
+        contesta2 = u1.TrobaUsuari(contesta);
+        demanat2 = p1.TrobaCodi(demanat);
+        oferit2 = p1.TrobaCodi(oferit);
+        Intercanvi nou = new Intercanvi(codi, interessat2, contesta2, demanat2, oferit2);
+        nou.setIvaloracio(ivaloracio);
+        nou.setOvaloracio(ovaloracio);
+        nou.setResposta(resposta);
+        nou.setTrato(trato);
 
-        Alies = intercanvi.nextToken();
-        email = intercanvi.nextToken();
-        cp = Integer.parseInt(intercanvi.nextToken());
-        contesta = new Usuari(Alies, email, cp);
-
+        return nou;
     }
 
 

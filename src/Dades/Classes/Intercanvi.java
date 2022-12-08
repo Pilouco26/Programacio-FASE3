@@ -116,11 +116,6 @@ public final class Intercanvi {
         this.resposta = resposta;
     }
 
-    public String toStringMACO() {
-        
-        return ("CODI: "+getCodi()+", Interessat: "+getInteressat().getAlies()+", Contestant: "+getContesta().getAlies()+", Producte demanat: "+getDemanat().getNom()+", Producte oferit: "+getOferit().getNom());
-    }
-
 
 
 }
