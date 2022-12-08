@@ -20,6 +20,10 @@ public class LlistaIntercanvis {
         if(nElem<llista.length)
         {
             llista[nElem] = i.copia();
+            llista[nElem].setTrato(i.getTrato());
+            llista[nElem].setResposta(i.getResposta());
+            llista[nElem].setOvaloracio(i.getOvaloracio());
+            llista[nElem].setIvaloracio(i.getIvaloracio());
             nElem++;
         }
     }

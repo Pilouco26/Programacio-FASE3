@@ -37,7 +37,7 @@ public class Data {
 		} else { // posem la data de referencia com a senyal d'error
 			this.dia = 1;
 			this.mes = 1;
-			this.any = 2000;
+			this.any = 1969;
 		}
 	}
 

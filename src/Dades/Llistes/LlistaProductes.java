@@ -84,6 +84,32 @@ public class LlistaProductes {
         return BeActiu;
     }
 
+    public LlistaProductes GetServeis()
+    {
+        LlistaProductes Serveis= new LlistaProductes(getnumServeis());
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i] instanceof Servei)
+            {
+                Serveis.afegirProductes(llista[i]);
+            }
+        }
+        return Serveis;
+    }
+
+    public LlistaProductes GetBens()
+    {
+        LlistaProductes Bens= new LlistaProductes(getnumBens());
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i] instanceof Bens)
+            {
+                Bens.afegirProductes(llista[i]);
+            }
+        }
+        return Bens;
+    }
+
     public int getActius()
     {
         int mida=0;
@@ -96,6 +122,39 @@ public class LlistaProductes {
         }
         return mida;
     }
+    public int getnumServeis()
+    {
+        int mida=0;
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i] instanceof Servei)
+            {
+                mida++;
+            }
+        }
+        return mida;
+    }
+
+    public int getnumBens()
+    {
+        int mida=0;
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i] instanceof Bens)
+            {
+                mida++;
+            }
+        }
+        return mida;
+    }
+
+
+
+    public int getnElem()
+    {
+        return nElem;
+    }
+
     public int getIntercanviables()
     {
         int mida =0;

@@ -1,6 +1,5 @@
 package Dades.Llistes;
 
-import java.util.Arrays;
 
 import Dades.Classes.Usuari;
 import Exception.AliesRepetit;

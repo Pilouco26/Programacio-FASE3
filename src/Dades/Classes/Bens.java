@@ -7,12 +7,12 @@ public final class Bens extends Producte {
     private double fonsCM;
     private double pesKG;
     private boolean intercanvi;
+    private Data Data_intercanvi;
 
     /**
      * Constructor d'un bé, conté el superconstructor de la classe producte
      * @param nom: Nom del Producte
      * @param descripcio: Descripció del producte
-     * @param tipus: Tipus de producte
      * @param data: Data del producte
      * @param amplada: amplada del bé
      * @param alçada: alçada del bé 
@@ -27,6 +27,8 @@ public final class Bens extends Producte {
         this.fonsCM = fonsCM;
         this.pesKG = pesKG;
         intercanvi= false;
+        Data_intercanvi= null;
+
     }
     /**
      * Getter amplada
@@ -99,6 +101,10 @@ public final class Bens extends Producte {
     {
         return "Nom: +"+nom+", Descripció: "+descripcio+" Data inicial: "+data;
     }
-
+    @Override
+    public String toString()
+    {
+        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+Data_intercanvi;
+    }
 
 }

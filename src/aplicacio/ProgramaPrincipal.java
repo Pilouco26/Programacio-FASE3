@@ -1,5 +1,6 @@
 package aplicacio;
 
+import aplicacio.*;
 import java.util.Scanner;
 
 import Dades.Classes.*;
@@ -37,7 +38,7 @@ public class ProgramaPrincipal {
     p.afegirProductes(bProva);
     LlistaProductes B = p.BensActius();
 
-   
+
     
     
 

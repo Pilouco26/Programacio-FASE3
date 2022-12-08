@@ -36,6 +36,10 @@ public final class Intercanvi {
     @Override
     public String toString() {
         
+        return (+getCodi()+";"+getInteressat().getAlies()+";"+getContesta().getAlies()+";"+getDemanat().getNom()+";"+getOferit().getNom()+";"+getResposta()+";"+getTrato()+";"+getIvaloracio()+";"+getOvaloracio());
+    }
+    public String toStringMaco() {
+        
         return ("CODI: "+getCodi()+", Interessat: "+getInteressat().getAlies()+", Contestant: "+getContesta().getAlies()+", Producte demanat: "+getDemanat().getNom()+", Producte oferit: "+getOferit().getNom()+", Resposta: "+getResposta()+", Trato: "+getTrato()+", Valoració del interessat: "+getIvaloracio()+", Valoració del demanat: "+getOvaloracio());
     }
 
@@ -76,7 +80,7 @@ public final class Intercanvi {
     
 
 
-    public void setOvaloracio(short ovaloracio) {
+    public void setOvaloracio(int ovaloracio) {
         this.ovaloracio = ovaloracio;
     }
 
@@ -104,8 +108,12 @@ public final class Intercanvi {
         this.trato = trato;
     }
 
-    public void setIvaloracio(short ivaloracio) {
+    public void setIvaloracio(int ivaloracio) {
         this.ivaloracio = ivaloracio;
+    }
+    public void setResposta(boolean resposta)
+    {
+        this.resposta = resposta;
     }
 
     public String toStringMACO() {
