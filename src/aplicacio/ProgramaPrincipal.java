@@ -24,8 +24,8 @@ public class ProgramaPrincipal {
        
         /*SERIALITZAR LA CLASSE USUARI */
         storeData(l1);
-        LlistaUsuaris l2 = new LlistaUsuaris(l1.getnElem());
-        readData(l2, l1.getnElem());
+        LlistaUsuaris l2 = new LlistaUsuaris(4000);
+        readData(l2,l1.getnElem());
        
 
 
@@ -214,7 +214,7 @@ public class ProgramaPrincipal {
     {
         int limit1 = 1;
         int limit2 = 4;
-        System.out.println("\n\n\n\t\t\t\t\t[MENU PRNICPAL]    \n    [1] Consultar Llistes\n    [2] Intercanvis \n    [3] Usuari \n    [4] Sortir de l'aplicació");
+        System.out.println("\n\t\t\t\t\t[MENU PRNICPAL]    \n    [1] Consultar Llistes\n    [2] Intercanvis \n    [3] Usuari \n    [4] Sortir de l'aplicació");
         int menu = llegirEnter(limit1, limit2);
 
         return menu;
@@ -376,8 +376,8 @@ public class ProgramaPrincipal {
         int mesTT = Integer.parseInt(DataIPT.nextToken());
         int anyTT = Integer.parseInt(DataIPT.nextToken());
         Data DataITT5 = new Data(diaTT, mesTT, anyTT);
-
-        return new Servei(nom1, descripcio1, DataITT, DataITT5);
+        String codi = GenCodiProducte();
+        return new Servei(codi, nom1, descripcio1, DataITT, DataITT5);
 
 
     }
@@ -396,15 +396,15 @@ public class ProgramaPrincipal {
         double fons = Double.parseDouble(teclat.nextLine());
         System.out.println("\nDefinir pes en kilograms:");
         double pesKG = Double.parseDouble(teclat.nextLine());
-
-        return new Bens(nom1, descripcio1, DataITT, amplada, alçada, fons, pesKG);
+        String codi = GenCodiProducte();
+        return new Bens(codi, nom1, descripcio1, DataITT, amplada, alçada, fons, pesKG);
 
 
     }
 
     public static Producte ReadP(Scanner fileS, int tipus)
     {
-        String nom, descripcio, servei;
+        String codi, nom, descripcio, servei;
         int dia1, mes1, any1, dia2, mes2, any2, dia3, mes3, any3;
         Data data, datafi;
         double amplada, alçada, fons, pes;
@@ -412,6 +412,7 @@ public class ProgramaPrincipal {
 
         servei = fileS.nextLine();
             StringTokenizer Producte = new StringTokenizer(servei, ";");
+            codi= Producte.nextToken();
             nom = Producte.nextToken();
             descripcio = Producte.nextToken();
             StringTokenizer data1 = new StringTokenizer(Producte.nextToken(), "/");
@@ -430,7 +431,7 @@ public class ProgramaPrincipal {
                 any2 = Integer.parseInt(data2.nextToken());
 
                 datafi= new Data(dia2, mes2, any2);
-                return new Servei(nom, descripcio, data, datafi);  
+                return new Servei(codi, nom, descripcio, data, datafi);  
             }
             else
             {
@@ -439,7 +440,7 @@ public class ProgramaPrincipal {
                 fons =    Double.parseDouble(Producte.nextToken());
                 pes  =    Double.parseDouble(Producte.nextToken());
                 intercanviat = Boolean.parseBoolean(Producte.nextToken());
-                Producte Be= new Bens(nom, descripcio, data, amplada, alçada, fons, pes);
+                Producte Be= new Bens(codi, nom, descripcio, data, amplada, alçada, fons, pes);
                 ((Bens)Be).setIntercanvi(intercanviat);
                 if(intercanviat){
 
@@ -593,7 +594,7 @@ public class ProgramaPrincipal {
         ovaloracio = Integer.parseInt(intercanvi.nextToken());
         interessat2 = u1.TrobaUsuari(interessat);
         contesta2 = u1.TrobaUsuari(contesta);
-        demanat2 = p1.TrobaCodi(demanat);
+        demanat2 = p1.Trob4aCodi(demanat);
         oferit2 = p1.TrobaCodi(oferit);
         Intercanvi nou = new Intercanvi(codi, interessat2, contesta2, demanat2, oferit2);
         nou.setIvaloracio(ivaloracio);
@@ -653,4 +654,18 @@ public class ProgramaPrincipal {
                 }
                 }
 
+    
+    public static String GenCodiProducte() {
+        int leftLimit = 65; // letter 'a'
+        int rightLimit = 90; // letter 'z'
+        int targetStringLength = 6;
+        Random random = new Random();
+    
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+          .limit(targetStringLength)
+          .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+          .toString();
+        
+        return generatedString;                         //FALTA MIRAR QUE NO ESTIGUI REPETIT
     }
+}
