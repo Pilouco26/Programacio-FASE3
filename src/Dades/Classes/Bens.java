@@ -112,4 +112,9 @@ public final class Bens extends Producte {
         return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi+";"+Data_intercanvi.toString();
     }
 
+    public String toStringFalse()
+    {
+        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi;
+    }
+
 }

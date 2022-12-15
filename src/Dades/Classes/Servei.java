@@ -21,7 +21,7 @@ public final class Servei extends Producte{
 
     public Servei copia()
     {
-        return new Servei(getNom(), getDescripcio(), datafi, datafi);
+        return new Servei(getNom(), getDescripcio(), data, datafi);
     }
     
     public void actiu(Data actual)

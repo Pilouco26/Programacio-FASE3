@@ -199,22 +199,7 @@ public class LlistaProductes {
                     b.append(String.valueOf(llista[i]+"\n"));
                 }
                 else {
-                    b.append(((Bens)llista[i]).getNom());
-                    b.append(";");
-                    b.append(((Bens)llista[i]).getDescripcio());
-                    b.append(";");
-                    b.append(((Bens)llista[i]).getData());
-                    b.append(";");
-                    b.append(((Bens)llista[i]).getAmplada());
-                    b.append(";");
-                    b.append(((Bens)llista[i]).getAlçada());
-                    b.append(";");
-                    b.append(((Bens)llista[i]).getFons());
-                    b.append(";");
-                    b.append(((Bens)llista[i]).getPes());
-                    b.append(";");
-                    b.append(((Bens)llista[i]).getIntercanvi());
-                    b.append("\n");
+                    b.append(((Bens)llista[i]).toStringFalse()+"\n");
                 }
             }
             else b.append(String.valueOf(llista[i]+ "\n"));
