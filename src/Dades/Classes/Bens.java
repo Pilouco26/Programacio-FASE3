@@ -109,7 +109,7 @@ public final class Bens extends Producte {
     @Override
     public String toString()
     {
-        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi+";"+Data_intercanvi;
+        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi+";"+Data_intercanvi.toString();
     }
 
 }

@@ -29,6 +29,11 @@ public class LlistaProductes {
             if(p instanceof Bens)
             {
                 ((Bens)llista[nElem]).setIntercanvi(((Bens)p).getIntercanvi());
+                
+                if(((Bens)llista[nElem]).getIntercanvi())
+                {
+                    ((Bens)llista[nElem]).setData(((Bens)llista[nElem]).getData());
+                }
             }
             nElem++;
         }
@@ -188,7 +193,32 @@ public class LlistaProductes {
         StringBuilder b = new StringBuilder();
         
         for (int i = 0; ; i++) {
-            b.append(String.valueOf(llista[i]+"\n"));
+            if(llista[i] instanceof Bens)
+            {
+                if(((Bens)llista[i]).getIntercanvi()){            
+                    b.append(String.valueOf(llista[i]+"\n"));
+                }
+                else {
+                    b.append(((Bens)llista[i]).getNom());
+                    b.append(";");
+                    b.append(((Bens)llista[i]).getDescripcio());
+                    b.append(";");
+                    b.append(((Bens)llista[i]).getData());
+                    b.append(";");
+                    b.append(((Bens)llista[i]).getAmplada());
+                    b.append(";");
+                    b.append(((Bens)llista[i]).getAlçada());
+                    b.append(";");
+                    b.append(((Bens)llista[i]).getFons());
+                    b.append(";");
+                    b.append(((Bens)llista[i]).getPes());
+                    b.append(";");
+                    b.append(((Bens)llista[i]).getIntercanvi());
+                    b.append("\n");
+                }
+            }
+            else b.append(String.valueOf(llista[i]+ "\n"));
+           
             if (i == nElem-1)
                 return b.toString();
             

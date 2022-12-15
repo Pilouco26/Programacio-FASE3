@@ -36,8 +36,13 @@ public final class Intercanvi {
     @Override
     public String toString() {
         
-        return (+getCodi()+";"+getInteressat().getAlies()+";"+getContesta().getAlies()+";"+getDemanat().getNom()+";"+getOferit().getNom()+";"+getResposta()+";"+getTrato()+";"+getIvaloracio()+";"+getOvaloracio());
+        return (codi+";"+this.interessat.getAlies()+";"+getContesta().getAlies()+";"+getDemanat().getNom()+";"+getOferit().getNom()+";"+getResposta()+";"+getTrato()+";"+getIvaloracio()+";"+getOvaloracio());
     }
+
+
+
+
+
     public String toStringMaco() {
         
         return ("CODI: "+getCodi()+", Interessat: "+getInteressat().getAlies()+", Contestant: "+getContesta().getAlies()+", Producte demanat: "+getDemanat().getNom()+", Producte oferit: "+getOferit().getNom()+", Resposta: "+getResposta()+", Trato: "+getTrato()+", Valoració del interessat: "+getIvaloracio()+", Valoració del demanat: "+getOvaloracio());

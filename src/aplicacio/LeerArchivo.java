@@ -48,9 +48,7 @@ public class LeerArchivo {
         LlistaProductes s1  = new LlistaProductes(4000);
         LlistaIntercanvis i1 = new LlistaIntercanvis(4000);
                                                       //EL TO STRING S'HA DE FER MACO
-        LlegirServeis(s1);  
-        LlegirBens(s1);
-        LlegirIntercanvis(i1, s1, l2);
+        Llegir(i1, s1, l2);
     
         WriteS(s1);
         WriteB(s1);
@@ -58,7 +56,13 @@ public class LeerArchivo {
     }
 
 
+    public static void Llegir(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris l2) throws FileNotFoundException 
+    {
+        LlegirServeis(p1);  
+        LlegirBens(p1);
+        LlegirIntercanvis(i1, p1, l2);
 
+    }
 
 
 
@@ -73,7 +77,7 @@ public class LeerArchivo {
         {
             Producte padre = ReadP(fileB,1);
                                                                 //S'HA D'AFEGIR LA DATA D'INTERCANVI AL LLEGIR
-            s1.afegirProductes(padre);
+            s1.afegirProductes(padre);                          //mirar que si esta en true, te data
 
         }
         fileB.close(); 
@@ -241,7 +245,7 @@ public class LeerArchivo {
         File fitxerSC = new File("bens.txt");
         FileWriter fw = new FileWriter(fitxerSC);
         bw = new BufferedWriter(fw);
-        bw.write(s1.GetBens().toString());                                    
+        bw.write(s1.GetBens().toString());                  //FALTA ESCRIURE LA DATA DEL INTERCANVIAT                                   
         System.out.println("Bens escrits!");
 
         }catch (IOException ioe) {
