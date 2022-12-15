@@ -17,7 +17,7 @@ public class ProgramaPrincipal {
         LlistaUsuaris l1 = new LlistaUsuaris(4000); 
         LlistaProductes s1  = new LlistaProductes(4000);
         LlistaIntercanvis i1 = new LlistaIntercanvis(4000);
-        boolean sortir=false;
+        boolean sortir = false;
         boolean tornar = false; 
         LlegirUsuari(l1);
        
@@ -117,38 +117,51 @@ public class ProgramaPrincipal {
             
                 while(!tornar)
                 {
+                    tornar=false;
                     switch(menuIntercanvis())
                     {
                         case 1:
 
-                        System.out.println(" [1] Afegir Bé\n [2] Afegir Petició d'intercanvi\n [3] Afegir Servei\n");
-                        int num =llegirEnter(1, 3);
-
-                        switch(num)
+                        
+                        while(!tornar)
                         {
+                            System.out.println(" [1] Afegir Bé\n [2] Afegir Petició d'intercanvi\n [3] Afegir Servei\n [4] Tornar al menu Intercanvis\n");
+                            int num =llegirEnter(1, 4);
 
-                            case 1: 
+                        
+                            switch(num)
+                            {
+
+                                case 1: 
+
+                                Producte Benou = AfegirProducteB();
+                                s1.afegirProductes(Benou);
+                        
+
+                                break;
 
 
-                            break;
+
+                                case 2: 
+
+
+                                break;
 
 
 
-                            case 2: 
+                                case 3: 
+                                Producte nou = AfegirProducteS();
+                                ((Servei)nou).actiu(DataActual());
+                                s1.afegirProductes(nou);
+                                break; 
+                                
+                                case 4: 
 
+                                tornar = true;
 
-                            break;
-
-
-
-                            case 3: 
-                            Producte nou = AfegirProducteS();
-                            ((Servei)nou).actiu(DataActual());
-                            s1.afegirProductes(nou);
-
-                            break; 
+                                break; 
+                            }
                         }
-
                         break;
 
 
@@ -355,22 +368,36 @@ public class ProgramaPrincipal {
         String nom1 = teclat.nextLine();
         System.out.println("\nAfegir descripció:");
         String descripcio1 = teclat.nextLine();
-        System.out.println("\nAfegir data inici (dd/mm/aaaa):");
-        String DataI = teclat.nextLine();
-        StringTokenizer DataIT = new StringTokenizer(DataI, "/");       /*S'ha de crear excepció per evitar dates mal posades */
-        int diaT = Integer.parseInt(DataIT.nextToken());
-        int mesT = Integer.parseInt(DataIT.nextToken());
-        int anyT = Integer.parseInt(DataIT.nextToken());
-        Data DataITT = new Data(diaT, mesT, anyT);
+        Data DataITT = DataActual();
         System.out.println("\nAfegir data final (dd/mm/aaaa):");
         String DataIP = teclat.nextLine();
-        StringTokenizer DataIPT = new StringTokenizer(DataIP, "/");
-        int diaTT = Integer.parseInt(DataIPT.nextToken());
+        StringTokenizer DataIPT = new StringTokenizer(DataIP, "/");          /*S'ha de crear excepció per evitar dates mal posades */
+        int diaTT = Integer.parseInt(DataIPT.nextToken());                          /* Una altra per evitar posar dates inferiors a la data actual */
         int mesTT = Integer.parseInt(DataIPT.nextToken());
         int anyTT = Integer.parseInt(DataIPT.nextToken());
         Data DataITT5 = new Data(diaTT, mesTT, anyTT);
 
         return new Servei(nom1, descripcio1, DataITT, DataITT5);
+
+
+    }
+    public static Producte AfegirProducteB()
+    {
+        System.out.println("Afegir Bé:");
+        String nom1 = teclat.nextLine();
+        System.out.println("\nAfegir descripció:");
+        String descripcio1 = teclat.nextLine();                                                       
+        Data DataITT = DataActual();                                /*S'ha de crear excepció per evitar dates mal posades */
+        System.out.println("\nDefinir amplada:");
+        double amplada = Double.parseDouble(teclat.nextLine());
+        System.out.println("\nDefinir alçada:");
+        double alçada = Double.parseDouble(teclat.nextLine());
+        System.out.println("\nDefinir fons:");
+        double fons = Double.parseDouble(teclat.nextLine());
+        System.out.println("\nDefinir pes en kilograms:");
+        double pesKG = Double.parseDouble(teclat.nextLine());
+
+        return new Bens(nom1, descripcio1, DataITT, amplada, alçada, fons, pesKG);
 
 
     }
