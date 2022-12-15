@@ -19,9 +19,9 @@ public final class Bens extends Producte {
      * @param fons: fons del bé
      * @param pes: pes del bé
      */
-    public Bens(String nom, String descripcio, Data data, double amplada, double alçada, double fonsCM, double pesKG)
+    public Bens( String codi, String nom, String descripcio, Data data, double amplada, double alçada, double fonsCM, double pesKG)
     {
-        super(nom, descripcio, data);
+        super(codi, nom, descripcio, data);
         this.ampladaCM = amplada;
         this.alçadaCM = alçada;
         this.fonsCM = fonsCM;
@@ -99,7 +99,7 @@ public final class Bens extends Producte {
      * @return bé copiat
      */
     public Bens copia(){
-        return new Bens(getNom(), getDescripcio(), getData(), ampladaCM, alçadaCM, fonsCM, pesKG);
+        return new Bens(getCodi(), getNom(), getDescripcio(), getData(), ampladaCM, alçadaCM, fonsCM, pesKG);
     }
 
     public String toStringMacoFalse()
@@ -113,12 +113,12 @@ public final class Bens extends Producte {
     @Override
     public String toString()
     {
-        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi+";"+Data_intercanvi.toString();
+        return codi+";"+nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi+";"+Data_intercanvi.toString();
     }
 
     public String toStringFalse()
     {
-        return nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi;
+        return codi+";"+nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi;
     }
 
 }

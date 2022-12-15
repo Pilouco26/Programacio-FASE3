@@ -594,7 +594,7 @@ public class ProgramaPrincipal {
         ovaloracio = Integer.parseInt(intercanvi.nextToken());
         interessat2 = u1.TrobaUsuari(interessat);
         contesta2 = u1.TrobaUsuari(contesta);
-        demanat2 = p1.Trob4aCodi(demanat);
+        demanat2 = p1.TrobaCodi(demanat);
         oferit2 = p1.TrobaCodi(oferit);
         Intercanvi nou = new Intercanvi(codi, interessat2, contesta2, demanat2, oferit2);
         nou.setIvaloracio(ivaloracio);

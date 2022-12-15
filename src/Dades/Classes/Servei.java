@@ -8,9 +8,9 @@ public final class Servei extends Producte{
     private boolean actiu;
 
 
-    public Servei(String nom,String descripcio, Data data, Data datafi)
+    public Servei(String codi, String nom,String descripcio, Data data, Data datafi)
     {
-        super(nom, descripcio, data);
+        super(codi, nom, descripcio, data);
         this.datafi= datafi;
     }
 
@@ -21,7 +21,7 @@ public final class Servei extends Producte{
 
     public Servei copia()
     {
-        return new Servei(getNom(), getDescripcio(), data, datafi);
+        return new Servei(getCodi(), getNom(), getDescripcio(), data, datafi);
     }
     
     public void actiu(Data actual)
@@ -40,7 +40,7 @@ public final class Servei extends Producte{
     @Override
     public String toString()
     {
-        return nom+";"+descripcio+";"+data+";"+datafi;
+        return codi+";"+nom+";"+descripcio+";"+data+";"+datafi;
     }
    
     public String toStringMaco()
