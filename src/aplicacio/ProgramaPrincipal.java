@@ -1,6 +1,7 @@
 package aplicacio;
 import Dades.Llistes.*;
-
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
 import java.util.Scanner;
 import java.io.*;
 import java.util.*;
@@ -12,37 +13,20 @@ public class ProgramaPrincipal {
     static Scanner teclat = new Scanner(System.in);
 
     public static void main(String[] args) throws FileNotFoundException{
-    
-        File fitxer = new File("usuari.txt");
-        Scanner file = new Scanner(fitxer);
+        System.out.println(DataActual().toString());
         LlistaUsuaris l1 = new LlistaUsuaris(4000); 
         LlistaProductes s1  = new LlistaProductes(4000);
         LlistaIntercanvis i1 = new LlistaIntercanvis(4000);
         boolean sortir=false;
         boolean tornar = false; 
-        Data actual= new Data(2, 5, 21);
-        int i=0;
-        
-        /*CONSTRUIR LLISTA USUARIS */ 
-        while(file.hasNextLine())
-        {
-            Usuari u1= ReadU(file);
-            try {
-                l1.AfegirUsuari(u1);
-            } catch (AliesRepetit e) {
-                
-                System.out.println("Usuari Repetit, posició["+i+"]");
-                
-            }
-            i++;
-        }
-        file.close();
+        LlegirUsuari(l1);
+       
        
         /*SERIALITZAR LA CLASSE USUARI */
         storeData(l1);
         LlistaUsuaris l2 = new LlistaUsuaris(l1.getnElem());
         readData(l2, l1.getnElem());
-        System.out.println(l2.toString());
+       
 
 
         Llegir(i1, s1, l2);  
@@ -81,19 +65,20 @@ public class ProgramaPrincipal {
 
                                         case 2: 
                                             
-                                        System.out.println("Llista Productes:\n "+s1.toString());
+                                        System.out.println("Llista Productes:\n"+s1.toStringMaco());
                                         break;
 
                                         case 3: 
-                                            System.out.println("Llista Serveis");
+                        
+                                            System.out.println("Llista Serveis:\n"+s1.GetServeis().toStringMaco());
                                         break;
 
                                         case 4: 
-                                            System.out.println("Llista Bens");
+                                            System.out.println("Llista Bens:\n"+s1.GetBens().toStringMaco());
                                         break; 
 
                                         case 5: 
-                                            System.out.println("Llista Usuaris");
+                                        System.out.println("Llista Bens:\n"+l1.toString());
                                         break; 
 
                                         case 6:
@@ -107,7 +92,7 @@ public class ProgramaPrincipal {
 
                             case 2: 
                             LlistaProductes a= s1.ServeisActius();
-                            System.out.println(a.toString());
+                            System.out.println(a.toStringMaco());
                             System.out.println("\n\n");
                             delay(2000);
 
@@ -115,7 +100,7 @@ public class ProgramaPrincipal {
 
                             case 3: 
                             LlistaProductes B = s1.BensActius();
-                            System.out.println(B.toString());
+                            System.out.println(B.toStringMaco());
                             System.out.println("\n\n");
                             delay(2000);
                             break; 
@@ -158,7 +143,7 @@ public class ProgramaPrincipal {
 
                             case 3: 
                             Producte nou = AfegirProducteS();
-                            ((Servei)nou).actiu(actual);
+                            ((Servei)nou).actiu(DataActual());
                             s1.afegirProductes(nou);
 
                             break; 
@@ -242,13 +227,6 @@ public class ProgramaPrincipal {
         return llegirEnter(limit1, limit2);
     }
 
-    private static String llegirString()
-    {
-        String nom = teclat.nextLine();
-
-        return nom;
-    }
-
     private static int menuIntercanvis()
     {
         int limit1= 1;
@@ -298,7 +276,7 @@ public class ProgramaPrincipal {
     }
     public static void Llegir(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris l2) throws FileNotFoundException 
     {
-        LlegirServeis(p1);  
+        LlegirServeis(p1, DataActual());  
         LlegirBens(p1);
         LlegirIntercanvis(i1, p1, l2);
 
@@ -310,7 +288,16 @@ public class ProgramaPrincipal {
         WriteI(i1);
     }
 
-
+    public static Data DataActual()
+    {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        StringTokenizer dat = new StringTokenizer(dtf.format(now), "/");
+        int dia =  Integer.parseInt(dat.nextToken());  
+        int mes =  Integer.parseInt(dat.nextToken());
+        int any =  Integer.parseInt(dat.nextToken());
+        return new Data(dia, mes, any);
+    }
 
 
 
@@ -329,9 +316,9 @@ public class ProgramaPrincipal {
         fileB.close(); 
     }
 
-    public static void LlegirServeis(LlistaProductes s1) throws FileNotFoundException{
+    public static void LlegirServeis(LlistaProductes s1, Data actual) throws FileNotFoundException{
 
-        Data actual = new Data(04, 12, 2022);
+       
         File fitxerS = new File("servei.txt");
         Scanner fileS = new Scanner(fitxerS);
         while(fileS.hasNextLine())
@@ -460,7 +447,25 @@ public class ProgramaPrincipal {
 
     }
 
-
+    public static void LlegirUsuari(LlistaUsuaris l1) throws FileNotFoundException{
+        File fitxer = new File("usuari.txt");
+        Scanner file = new Scanner(fitxer);
+        int i=0; 
+         /*CONSTRUIR LLISTA USUARIS */ 
+         while(file.hasNextLine())
+         {
+             Usuari u1= ReadU(file);
+             try {
+                 l1.AfegirUsuari(u1);
+             } catch (AliesRepetit e) {
+                 
+                 System.out.println("Usuari Repetit, posició["+i+"]");
+                 
+             }
+             i++;
+         }
+         file.close();
+    }
 
     public static void WriteS(LlistaProductes s1)
     {

@@ -102,9 +102,13 @@ public final class Bens extends Producte {
         return new Bens(getNom(), getDescripcio(), getData(), ampladaCM, alçadaCM, fonsCM, pesKG);
     }
 
+    public String toStringMacoFalse()
+    {
+        return "Nom: "+nom+", Descripció: "+descripcio+", Està disponible per intercanvi des-de: "+data;
+    }
     public String toStringMaco()
     {
-        return "Nom: +"+nom+", Descripció: "+descripcio+" Data inicial: "+data;
+        return "Nom: "+nom+", Descripció: "+descripcio+", Data inicial: "+data+ ", No està disponible per intercanvis, va ser intercanviat el : "+Data_intercanvi.toString();
     }
     @Override
     public String toString()

@@ -45,6 +45,6 @@ public final class Servei extends Producte{
    
     public String toStringMaco()
     {
-        return "Nom: "+nom+", Descripció: "+descripcio+", Data inicial: "+data+", Data final: "+datafi;
+        return "Nom: "+nom+", Descripció: "+descripcio+",  El servei comença el : "+data+" i acaba el dia: "+datafi+".";
     }
 }

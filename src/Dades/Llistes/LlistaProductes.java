@@ -210,4 +210,31 @@ public class LlistaProductes {
         }
         
     }
+
+    public String toStringMaco() {
+
+        if(nElem==0)
+        {
+            return "No hi ha cap element en aquesta llista.";
+        }
+        StringBuilder b = new StringBuilder();
+        
+        for (int i = 0; ; i++) {
+            if(llista[i] instanceof Bens)
+            {
+                if(((Bens)llista[i]).getIntercanvi()){            
+                    b.append(((Bens)llista[i]).toStringMaco()+"\n");
+                }
+                else {
+                    b.append(((Bens)llista[i]).toStringMacoFalse()+"\n");
+                }
+            }
+            else b.append(((Servei)llista[i]).toStringMaco()+"\n");
+           
+            if (i == nElem-1)
+                return b.toString();
+            
+        }
+        
+    }
 }
