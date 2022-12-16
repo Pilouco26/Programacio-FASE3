@@ -36,7 +36,7 @@ public final class Intercanvi {
     @Override
     public String toString() {
         
-        return (codi+";"+this.interessat.getAlies()+";"+getContesta().getAlies()+";"+getDemanat().getNom()+";"+getOferit().getNom()+";"+getResposta()+";"+getTrato()+";"+getIvaloracio()+";"+getOvaloracio());
+        return (codi+";"+this.interessat.getAlies()+";"+getContesta().getAlies()+";"+getDemanat().getCodi()+";"+getOferit().getCodi()+";"+getResposta()+";"+getTrato()+";"+getIvaloracio()+";"+getOvaloracio());
     }
 
 
