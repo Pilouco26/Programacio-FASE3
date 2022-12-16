@@ -171,7 +171,9 @@ public class ProgramaPrincipal {
 
                         case 3: 
 
-                        s1=DonarBaixaB(s1);
+                            System.out.println("Escriu l'indicador del producte que vols donar de baixa:\n");
+                            String codi = teclat.nextLine();
+                            s1.DonarBaixaBe(codi);
 
                         break;
 
@@ -676,16 +678,5 @@ public class ProgramaPrincipal {
         return generatedString;                         //FALTA MIRAR QUE NO ESTIGUI REPETIT
     }
 
-    public static LlistaProductes DonarBaixaB(LlistaProductes l1)
-    {
-        System.out.println("Indica el identificador del bé que vols esborrar");
-        String codi = teclat.nextLine();
-        if(l1.CercaCodi(codi)) return l1.DonarBaixaB(codi);                                //VERIFICAR QUE NO ESTIGUI INTERCANVIAT
-        else{
-            System.out.println("Aquest codi no existeix");
-            return l1;
-        }
-        
 
-    }
 }
