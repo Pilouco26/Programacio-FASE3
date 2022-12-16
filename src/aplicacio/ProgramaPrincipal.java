@@ -134,7 +134,7 @@ public class ProgramaPrincipal {
 
                                 case 1: 
 
-                                Producte Benou = AfegirProducteB();
+                                Producte Benou = AfegirProducteB(s1);
                                 s1.afegirProductes(Benou);
                         
 
@@ -150,7 +150,7 @@ public class ProgramaPrincipal {
 
 
                                 case 3: 
-                                Producte nou = AfegirProducteS();
+                                Producte nou = AfegirProducteS(s1);
                                 ((Servei)nou).actiu(DataActual());
                                 s1.afegirProductes(nou);
                                 break; 
@@ -170,6 +170,8 @@ public class ProgramaPrincipal {
                         break;
 
                         case 3: 
+
+                        s1=DonarBaixaB(s1);
 
                         break;
 
@@ -362,7 +364,7 @@ public class ProgramaPrincipal {
     }
 
 
-    public  static Producte AfegirProducteS()
+    public  static Producte AfegirProducteS(LlistaProductes l1)
     {
         System.out.println("Afegir servei:");
         String nom1 = teclat.nextLine();
@@ -376,12 +378,12 @@ public class ProgramaPrincipal {
         int mesTT = Integer.parseInt(DataIPT.nextToken());
         int anyTT = Integer.parseInt(DataIPT.nextToken());
         Data DataITT5 = new Data(diaTT, mesTT, anyTT);
-        String codi = GenCodiProducte();
+        String codi = GenCodiProducte(l1);
         return new Servei(codi, nom1, descripcio1, DataITT, DataITT5);
 
 
     }
-    public static Producte AfegirProducteB()
+    public static Producte AfegirProducteB(LlistaProductes s1)
     {
         System.out.println("Afegir Bé:");
         String nom1 = teclat.nextLine();
@@ -396,7 +398,7 @@ public class ProgramaPrincipal {
         double fons = Double.parseDouble(teclat.nextLine());
         System.out.println("\nDefinir pes en kilograms:");
         double pesKG = Double.parseDouble(teclat.nextLine());
-        String codi = GenCodiProducte();
+        String codi = GenCodiProducte(s1);
         return new Bens(codi, nom1, descripcio1, DataITT, amplada, alçada, fons, pesKG);
 
 
@@ -605,15 +607,6 @@ public class ProgramaPrincipal {
         return nou;
     }
 
-
-
-
-
-
-
-
-
-
      public static void storeData (LlistaUsuaris list) {
                 ObjectOutputStream outputFile;
                 try {
@@ -654,18 +647,45 @@ public class ProgramaPrincipal {
                 }
                 }
 
-    
-    public static String GenCodiProducte() {
-        int leftLimit = 65; // letter 'a'
-        int rightLimit = 90; // letter 'z'
+     public static boolean GenRepetit(LlistaProductes l1, String codi)
+    {
+        boolean repetit=false;
+        int i=0;
+        while(i<l1.getnElem() && !repetit)
+        {
+           
+            
+        }
+        return repetit;
+    }
+            
+    public static String GenCodiProducte(LlistaProductes l1) {
+        int leftLimit = 65; // letter 'A'
+        int rightLimit = 90; // letter 'Z'
         int targetStringLength = 6;
         Random random = new Random();
-    
+      
         String generatedString = random.ints(leftLimit, rightLimit + 1)
-          .limit(targetStringLength)
-          .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-          .toString();
+        .limit(targetStringLength)
+        .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+        .toString();
+        
+        
+        
         
         return generatedString;                         //FALTA MIRAR QUE NO ESTIGUI REPETIT
+    }
+
+    public static LlistaProductes DonarBaixaB(LlistaProductes l1)
+    {
+        System.out.println("Indica el identificador del bé que vols esborrar");
+        String codi = teclat.nextLine();
+        if(l1.CercaCodi(codi)) return l1.DonarBaixaB(codi);                                //VERIFICAR QUE NO ESTIGUI INTERCANVIAT
+        else{
+            System.out.println("Aquest codi no existeix");
+            return l1;
+        }
+        
+
     }
 }

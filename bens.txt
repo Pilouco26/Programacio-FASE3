@@ -1,7 +1,3 @@
-AAAAAA;Padre;Padre;2/5/21;50.0;20.0;10.0;35.2;false
 FFFFFF;Padre;Padre;2/5/21;50.0;20.0;10.0;35.2;false
-DSFSDF;brrr;sdfnadfs;1/1/1969;50.0;1.0;1.0;1.0;false
-RTYDFH;F2012; rrari;1/1/2012;34.0;2.0;5.0;800.0;true;1/1/2012
-GGFSDG;F2012; rrari;1/1/2012;34.0;7.0;5.0;800.0;false
-DFGGDF;F2012; rrari;1/1/2012;34.0;7.0;5.0;800.0;true;1/1/2012
-SDAFAF;Padre;Padre;2/5/21;50.0;20.0;10.0;35.2;false
+DSFSDF;brrr;sdfnadfs;1/1/1969;50.0;1.0;1.0;1.0;false;
+SDAFAF;Padre;Padre;2/5/21;50.0;20.0;10.0;35.2;true;2/5/21

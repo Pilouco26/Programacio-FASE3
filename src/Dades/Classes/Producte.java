@@ -38,12 +38,11 @@ public abstract class Producte {    //no volem obtenir fer res
     {
         return data;
     }
-    public String getCodi()
-    {
-        return codi;
-    }
+    public abstract String getCodi();
+ 
 
     public abstract Producte copia();
+    
 
     @Override
     public String toString(){

@@ -18,6 +18,10 @@ public final class Servei extends Producte{
     {
         return datafi;
     }
+    public  String getCodi()
+    {
+        return codi;
+    }
 
     public Servei copia()
     {

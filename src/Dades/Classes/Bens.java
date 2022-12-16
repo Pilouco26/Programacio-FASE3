@@ -30,6 +30,11 @@ public final class Bens extends Producte {
         Data_intercanvi= null;
 
     }
+
+    public  String getCodi()
+    {
+        return codi;
+    }
     /**
      * Getter amplada
      * @return amplada

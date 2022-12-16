@@ -37,10 +37,23 @@ public class LlistaProductes {
             }
             nElem++;
         }
-        
-        
-
+    }    
+    public boolean ProducteRepetit(String codi)
+    {
+        boolean repetit=false;
+        int i=0;
+        while(i<nElem && !repetit)
+        {
+            if(llista[i].getCodi().equals(codi))
+            {
+                return true;
+            }
+            else i++;
+        }
+        return repetit;
     }
+
+
     public void esborraP(String nom)
     {
         boolean erased= true;
@@ -166,6 +179,40 @@ public class LlistaProductes {
         else return null;
     }
 
+    public boolean CercaCodi(String codi)
+    {
+        boolean trobat = false;
+        int i=0; 
+        while (i<nElem && !trobat)
+        {
+            if(llista[i].getCodi().equals(codi)) trobat = true;
+            else i++;
+        }
+        return trobat;
+    }   
+
+
+    public LlistaProductes DonarBaixaB(String codi)                         //PROBLABLEMENT UTILITZAR L'ALTRE
+    {
+        LlistaProductes aux = new LlistaProductes(nElem);
+        int i=0; 
+        while (i<nElem)
+        {
+            if(llista[i] instanceof Bens )
+            {
+                if(!llista[i].getCodi().equals(codi) && !((Bens)llista[i]).getIntercanvi())                                     //OJO QUE AQUEST ESTAVA INTERCANVIAT
+                {
+                    aux.afegirProductes(llista[i]);
+                }
+                
+            }
+            else aux.afegirProductes(llista[i]);
+            i++;
+            
+        }
+        return aux; 
+       
+    }
 
     public int getnElem()
     {
