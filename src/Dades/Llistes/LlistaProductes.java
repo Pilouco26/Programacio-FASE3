@@ -191,29 +191,29 @@ public class LlistaProductes {
         return trobat;
     }   
 
-
-    public LlistaProductes DonarBaixaB(String codi)                         //PROBLABLEMENT UTILITZAR L'ALTRE
-    {
-        LlistaProductes aux = new LlistaProductes(nElem);
-        int i=0; 
-        while (i<nElem)
-        {
-            if(llista[i] instanceof Bens )
-            {
-                if(!llista[i].getCodi().equals(codi) && !((Bens)llista[i]).getIntercanvi())                                     //OJO QUE AQUEST ESTAVA INTERCANVIAT
+    public void DonarBaixaBe (String codi)
+	{
+		int i=0;
+		while(i<nElem)
+		{
+			if(llista[i] instanceof Bens)
+			{
+                if(llista[i].getCodi().equals(codi)&& !((Bens)llista[i]).getIntercanvi())
                 {
-                    aux.afegirProductes(llista[i]);
+                    for(int j=i; j<nElem-1; j++)
+                    {
+                        llista[j]=llista[j+1];
+                    }
+                    
+                    nElem--;
                 }
-                
-            }
-            else aux.afegirProductes(llista[i]);
-            i++;
-            
-        }
-        return aux; 
-       
-    }
-
+                else i++;
+			
+			}
+			else i++;
+		}
+	}
+   
     public int getnElem()
     {
         return nElem;
