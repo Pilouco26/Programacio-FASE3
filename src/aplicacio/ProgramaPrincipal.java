@@ -171,15 +171,24 @@ public class ProgramaPrincipal {
 
                         case 3: 
 
-                            System.out.println("Escriu l'indicador del producte que vols donar de baixa:\n");
-                            String codi = teclat.nextLine();
-                            s1.DonarBaixaBe(codi);
+                        System.out.println("Escriu l'indicador del producte que vols donar de baixa:\n");
+                        String codi = teclat.nextLine();
+                        int k = s1.CercaCodiS(codi);
+                        if(k!=-1) s1.DonarBaixaServei(codi, k);
+                        else System.out.println("Aquest servei no existeix");
+                            
+                            
+                            
 
                         break;
 
 
                         case 4: 
 
+                            System.out.println("Escriu l'indicador del producte que vols donar de baixa:\n");
+                            String codi2 = teclat.nextLine();
+                            if(s1.intercanviable(codi2)) s1.DonarBaixaBe(codi2);
+                            else System.out.println("L'indicador no existeix o ja ha estat intercanviat ://\n");
                         break;
 
                         case 5: 
@@ -188,8 +197,12 @@ public class ProgramaPrincipal {
 
                         case 6: 
 
-                        tornar= true;
+                        
 
+                        break;
+                        case 7: 
+
+                        tornar=true;
                         break;
                     }
                 }
@@ -247,9 +260,9 @@ public class ProgramaPrincipal {
     private static int menuIntercanvis()
     {
         int limit1= 1;
-        int limit2= 6;
+        int limit2= 7;
 
-        System.out.println("\t\t\t  [INTERCANVIS] \n\n [1] Afegir Productes o intercanvis\n [2] Aceptar/Refusar Intercanvi\n [3] Donar de Baixa Usuari/Bé\n [4] Mostrar Peticions\n [5] Servei més popular\n [6] Tornar al menu principal");
+        System.out.println("\t\t\t  [INTERCANVIS] \n\n [1] Afegir Productes o intercanvis\n [2] Aceptar/Refusar Intercanvi\n [3] Donar de Baixa Servei\n [4] Donar de Baixa Bé\n [5] Mostrar Peticions\n [6] Servei més popular\n [7] Tornar al menu principal");
         return llegirEnter(limit1, limit2);
     }
 
@@ -279,7 +292,7 @@ public class ProgramaPrincipal {
                 if (num<vMin) throw new ValorNoOk(num);
                 if (num>vMax) throw new ValorNoOk(num);
             }catch(NumberFormatException e){
-                System.out.println("ERROR, POSA UN PUTO NUMERO IL MENDIGATO :)");
+                System.out.println("ERROR, POSA UN  NUMERO :)");
             }catch(ValorNoOk e){
                 System.out.println("POSA UN NUMERO DEL MENU");
                 llegit=false;

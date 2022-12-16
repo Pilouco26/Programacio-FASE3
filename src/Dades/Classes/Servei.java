@@ -22,6 +22,13 @@ public final class Servei extends Producte{
     {
         return codi;
     }
+    public void setDataBaixa()
+    {
+        Data data= new Data(1, 1, 1);
+       this.data= data;
+       datafi= data; 
+
+    }
 
     public Servei copia()
     {

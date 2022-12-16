@@ -190,7 +190,25 @@ public class LlistaProductes {
         }
         return trobat;
     }   
+    public int CercaCodiS(String codi)
+    {
+        boolean trobat = false;
+        int i=0; 
+        while (i<nElem && !trobat)
+        {
+            if(llista[i].getCodi().equals(codi) && llista[i] instanceof Servei) return i;
+            else i++;
+        }
+        return -1;
+    }  
+    public void DonarBaixaServei(String codi, int pos)
+    {
+    
+        ((Servei)llista[pos]).setActiu(false);
+        ((Servei)llista[pos]).setDataBaixa();
+    
 
+    }
     public void DonarBaixaBe (String codi)
 	{
 		int i=0;
@@ -229,6 +247,16 @@ public class LlistaProductes {
         }
 
         return mida;
+    }
+    public boolean intercanviable(String codi)
+    {
+        
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i] instanceof Bens && llista[i].getCodi().equals(codi) && !((Bens)llista[i]).getIntercanvi()) return true;
+        }
+
+        return false;
     }
     @Override
     public String toString() {
