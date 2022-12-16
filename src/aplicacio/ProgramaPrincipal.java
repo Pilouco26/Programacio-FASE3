@@ -19,17 +19,10 @@ public class ProgramaPrincipal {
         LlistaIntercanvis i1 = new LlistaIntercanvis(4000);
         boolean sortir = false;
         boolean tornar = false; 
-        LlegirUsuari(l1);
-       
-       
-        /*SERIALITZAR LA CLASSE USUARI */
-        storeData(l1);
-        LlistaUsuaris l2 = new LlistaUsuaris(4000);
-        readData(l2,l1.getnElem());
        
 
 
-        Llegir(i1, s1, l2);  
+        Llegir(i1, s1, l1);  
 
         
 
@@ -212,11 +205,43 @@ public class ProgramaPrincipal {
             break;
             case 3:             //usuari
 
+                while(!tornar)
+                {
 
+               
+                    switch(menuUsuari())
+                    {
+                        case 1: 
+
+                        try {
+                            l1.AfegirUsuari(AfegirUsuari());
+                        } catch (AliesRepetit e) {
+                            
+                            System.out.println("L'alies ja està seleccionat :(");
+                        }
+                        
+
+                        break; 
+
+
+                        case 2: 
+
+
+                        break;
+
+
+                        case 3: 
+
+                        tornar = true;
+                        break; 
+                    }
+
+                }
             break;
             case 4:            //sortir
             
             Escriure(i1, s1);
+            storeData(l1);
     
             System.exit(0);
             break; 
@@ -232,6 +257,16 @@ public class ProgramaPrincipal {
         int limit1 = 1;
         int limit2 = 4;
         System.out.println("\n\t\t\t\t\t[MENU PRNICPAL]    \n    [1] Consultar Llistes\n    [2] Intercanvis \n    [3] Usuari \n    [4] Sortir de l'aplicació");
+        int menu = llegirEnter(limit1, limit2);
+
+        return menu;
+    }
+
+    private static int menuUsuari()
+    {
+        int limit1 = 1;
+        int limit2 = 3;
+        System.out.println("\n\t\t\t\t\t[MENU PRNICPAL]    \n    [1] Donar d'alta Usuari\n    [2] Mostrar Usuaris segons valoració \n    [3] Sortir del menú Usuari");
         int menu = llegirEnter(limit1, limit2);
 
         return menu;
@@ -304,11 +339,15 @@ public class ProgramaPrincipal {
 
         return num;
     }
-    public static void Llegir(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris l2) throws FileNotFoundException 
+    public static void Llegir(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris l1) throws FileNotFoundException 
     {
         LlegirServeis(p1, DataActual());  
         LlegirBens(p1);
-        LlegirIntercanvis(i1, p1, l2);
+        LlegirIntercanvis(i1, p1, l1);
+        readData(l1);
+        /*SERIALITZAR LA CLASSE USUARI */
+        storeData(l1);
+
 
     }
     public static void Escriure(LlistaIntercanvis i1, LlistaProductes s1) throws FileNotFoundException 
@@ -417,6 +456,18 @@ public class ProgramaPrincipal {
         return new Bens(codi, nom1, descripcio1, DataITT, amplada, alçada, fons, pesKG);
 
 
+    }
+
+    public static Usuari AfegirUsuari() throws AliesRepetit
+    {
+        System.out.println("Alies:");
+        String Alies = teclat.nextLine();
+        System.out.println("Email: ");
+        String email = teclat.nextLine();
+        System.out.println("cp ");
+        int cp = Integer.parseInt(teclat.nextLine());
+
+        return new Usuari(Alies, email, cp);
     }
 
     public static Producte ReadP(Scanner fileS, int tipus)
@@ -637,11 +688,11 @@ public class ProgramaPrincipal {
     
              }
 
-    public static void readData (LlistaUsuaris list, int numUsuaris) {
+    public static void readData (LlistaUsuaris list) {
                 ObjectInputStream inputFile;
                 try {
                 inputFile = new ObjectInputStream(new FileInputStream("Usuari.ser"));
-                for (int i=0; i<numUsuaris; i++) {
+                for (int i=0; i<4000; i++) {                                                //FALTA ARREGLAR AIXÓ
                 try {
                     list.AfegirUsuari((Usuari)inputFile.readObject());
                 } catch (AliesRepetit e) {
