@@ -156,6 +156,8 @@ public class ProgramaPrincipal {
 
                         case 2: 
 
+                        Contestar(l1, i1);
+                        
                         break;
 
                         case 3: 
@@ -244,7 +246,7 @@ public class ProgramaPrincipal {
 
     }
 
-
+    /*MENUS */
     private static int menu()
     {
         int limit1 = 1;
@@ -410,6 +412,7 @@ public class ProgramaPrincipal {
 
     }
 
+    /*AFEGIR USUARIS, PRODUCTES I INTERCANVIS */
 
     public  static Producte AfegirProducteS(LlistaProductes l1)
     {
@@ -471,6 +474,34 @@ public class ProgramaPrincipal {
 
     }
 
+    public static void Contestar(LlistaUsuaris u1, LlistaIntercanvis l1)
+    {
+        System.out.println("\nIndicador del intercanvi que vols contestar");
+        int codiI = Integer.parseInt(teclat.nextLine()); 
+        System.out.println("Qui ets?");
+        String contesta = teclat.nextLine();                          /*BUSCAR QUE SIGUI L'USUARI QUE HA DE CONSTESTAR */
+        System.out.println("\nA qui li vols acceptar o refusar la proposta?");
+        String interessat = teclat.nextLine();                                                       
+        System.out.println("\nQue vols constestar?");   
+                                                                         /*S'ha de crear excepció per veure si el usuar existeix, si el producte existeix i l'usuari té aquest producte */
+        Boolean resposta = Boolean.parseBoolean(teclat.nextLine());
+        System.out.println("\nValoració del intercanvi (contestador):");
+        int ovaloracio = Integer.parseInt(teclat.nextLine()); 
+        System.out.println("\nValoració del intercanvi (interessat):");
+        int ivaloracio = Integer.parseInt(teclat.nextLine()); 
+        Usuari interessat2 = u1.TrobaUsuari(interessat);
+        Usuari contesta2 = u1.TrobaUsuari(contesta);    
+        
+        if(interessat2 != null && contesta2 != null) {
+        
+        l1.AcepRefusarIntercanvi(resposta, codiI, ivaloracio, ovaloracio);
+
+
+        }
+
+
+    }
+
     public static Usuari AfegirUsuari() throws AliesRepetit
     {
         System.out.println("Alies:");
@@ -482,6 +513,9 @@ public class ProgramaPrincipal {
 
         return new Usuari(Alies, email, cp);
     }
+
+
+    /*LLEGIR FITXERS */
 
     public static Producte ReadP(Scanner fileS, int tipus)
     {
@@ -726,6 +760,9 @@ public class ProgramaPrincipal {
                 System.out.println("Error, el format de l'arxiu no és correcte per la definició actual de la classe Usuari."+e);
                 }
                 }
+
+
+    /*Generació aleatoria de codis */
 
      public static boolean GenRepetit(LlistaProductes l1, String codi)
     {

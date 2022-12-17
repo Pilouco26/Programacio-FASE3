@@ -27,7 +27,24 @@ public class LlistaIntercanvis {
             nElem++;
         }
     }
+    public void AcepRefusarIntercanvi(boolean resposta, int codi, int ivaloracio, int ovaloracio)
+    {
+        boolean trobat= false;
+        int i=0; 
+        while(i<nElem && !trobat){
 
+            if(llista[i].getCodi()==codi) trobat = true;
+            else i++;
+        }
+        if(trobat)
+        {
+            llista[i].setResposta(resposta);
+            llista[i].setTrato(true);
+            llista[i].setIvaloracio(ivaloracio);
+            llista[i].setOvaloracio(ovaloracio);
+        }
+
+    }
     @Override
     public String toString() {
 

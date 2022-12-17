@@ -1,2 +1,2 @@
 500;Yessir;Vegetta;ASDPAS;SDLKFL;false;false;0;0
-5152;Yessir;Vegetta;GEGEEG;FGCQYA;false;false;0;0
+5152;Yessir;Vegetta;GEGEEG;FGCQYA;true;true;5;5
