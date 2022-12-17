@@ -24,12 +24,6 @@ public class ProgramaPrincipal {
 
         Llegir(i1, s1, l1);  
 
-        
-
-       
-
-
-    
     
 
     while(!sortir) 
@@ -343,10 +337,10 @@ public class ProgramaPrincipal {
     {
         LlegirServeis(p1, DataActual());  
         LlegirBens(p1);
-        LlegirIntercanvis(i1, p1, l1);
         readData(l1);
         /*SERIALITZAR LA CLASSE USUARI */
         storeData(l1);
+        LlegirIntercanvis(i1, p1, l1); //Necessita petits tweaks
 
 
     }
@@ -354,7 +348,7 @@ public class ProgramaPrincipal {
     {
         WriteS(s1);
         WriteB(s1);
-        WriteI(i1);
+        WriteI(i1); //Necessita petits tweaks
     }
 
     public static Data DataActual()
@@ -647,7 +641,6 @@ public class ProgramaPrincipal {
         Usuari interessat2, contesta2;
         Producte demanat2, oferit2;
 
-       
         String intercanvis = FileI.nextLine();
 
         StringTokenizer intercanvi = new StringTokenizer(intercanvis, ";");
@@ -669,8 +662,10 @@ public class ProgramaPrincipal {
         nou.setOvaloracio(ovaloracio);
         nou.setResposta(resposta);
         nou.setTrato(trato);
-
         return nou;
+        
+
+       
     }
 
      public static void storeData (LlistaUsuaris list) {
