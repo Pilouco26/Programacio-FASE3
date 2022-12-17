@@ -40,9 +40,6 @@ public final class Intercanvi {
     }
 
 
-
-
-
     public String toStringMaco() {
         
         return ("CODI: "+getCodi()+", Interessat: "+getInteressat().getAlies()+", Contestant: "+getContesta().getAlies()+", Producte demanat: "+getDemanat().getNom()+", Producte oferit: "+getOferit().getNom()+", Resposta: "+getResposta()+", Trato: "+getTrato()+", Valoració del interessat: "+getIvaloracio()+", Valoració del demanat: "+getOvaloracio());

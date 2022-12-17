@@ -45,6 +45,22 @@ public class LlistaIntercanvis {
         }
         
     }
+    public String toStringMaco() {
+
+        if(nElem==0)
+        {
+            return "No hi ha cap element en aquesta llista.";
+        }
+        StringBuilder b = new StringBuilder();
+        
+        for (int i = 0; ; i++) {
+            b.append(llista[i].toStringMaco()+"\n");
+            if (i == nElem-1)
+                return b.toString();
+            
+        }
+        
+    }
 
   
 }

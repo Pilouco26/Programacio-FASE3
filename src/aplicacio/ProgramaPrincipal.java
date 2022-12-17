@@ -47,7 +47,7 @@ public class ProgramaPrincipal {
                                     switch(seleccioLlistes())
                                     {
                                         case 1: 
-                                            System.out.println("Llista Intercanvis");
+                                            System.out.println("Llista Intercanvis:\n"+i1.toStringMaco());
                                         break;
 
                                         case 2: 
@@ -65,7 +65,7 @@ public class ProgramaPrincipal {
                                         break; 
 
                                         case 5: 
-                                        System.out.println("Llista Bens:\n"+l1.toString());
+                                        System.out.println("Llista Usuaris:\n"+l1.toString());
                                         break; 
 
                                         case 6:
@@ -131,6 +131,8 @@ public class ProgramaPrincipal {
 
                                 case 2: 
 
+                                Intercanvi  IntercanviNou = AfegirIntercanvi(l1, s1);
+                                i1.AfegirIntercanvi(IntercanviNou);
 
                                 break;
 
@@ -163,9 +165,6 @@ public class ProgramaPrincipal {
                         int k = s1.CercaCodiS(codi);
                         if(k!=-1) s1.DonarBaixaServei(codi, k);
                         else System.out.println("Aquest servei no existeix");
-                            
-                            
-                            
 
                         break;
 
@@ -449,6 +448,26 @@ public class ProgramaPrincipal {
         String codi = GenCodiProducte(s1);
         return new Bens(codi, nom1, descripcio1, DataITT, amplada, alçada, fons, pesKG);
 
+
+    }
+    public static Intercanvi AfegirIntercanvi(LlistaUsuaris u1, LlistaProductes p1)
+    {
+        System.out.println("Qui ets?");
+        String interessat = teclat.nextLine();
+        System.out.println("\nA qui li vols intercanviar?");
+        String contesta = teclat.nextLine();                                                       
+        System.out.println("\nIndicador del producte que vols oferir:");                                     /*S'ha de crear excepció per veure si el usuar existeix, si el producte existeix i l'usuari té aquest producte */
+        String oferit = teclat.nextLine(); 
+        System.out.println("\nIndicador del producte que vols demanar");
+        String demanat = teclat.nextLine(); 
+        Usuari interessat2 = u1.TrobaUsuari(interessat);
+        Usuari contesta2 = u1.TrobaUsuari(contesta);
+        Producte demanat2 = p1.TrobaCodi(demanat);
+        Producte oferit2 = p1.TrobaCodi(oferit);
+        
+        int codi= GenCodiIntercanvi();
+
+        return new Intercanvi(codi, interessat2, contesta2, demanat2, oferit2);
 
     }
 
@@ -737,5 +756,13 @@ public class ProgramaPrincipal {
         return generatedString;                         //FALTA MIRAR QUE NO ESTIGUI REPETIT
     }
 
+    public static int GenCodiIntercanvi()
+    {
+        int min =0;
+        int max =9999;
+       
+
+        return (int)(Math.random()*(max-min+1)+min);
+    }
 
 }
