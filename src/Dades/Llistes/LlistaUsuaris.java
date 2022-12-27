@@ -1,9 +1,13 @@
 package Dades.Llistes;
 
 
+import java.io.Serializable;
+
+
 import Dades.Classes.Usuari;
+import Exception.AliesNoExisteix;
 import Exception.AliesRepetit;
-public class LlistaUsuaris {
+public class LlistaUsuaris implements Serializable{
     
     private Usuari[] llista;
     private int nElem;
@@ -45,7 +49,7 @@ public class LlistaUsuaris {
            
         }
     }
-    public Usuari TrobaUsuari(String usuari)
+    public Usuari TrobaUsuari(String usuari) throws AliesNoExisteix
     {
         boolean trobat= false;
         int i=0;       
@@ -59,8 +63,15 @@ public class LlistaUsuaris {
             else i++;
         }
         if(trobat) return llista[i];                                        //ENRECORDARSE DE PPOSAR LO QUE NO ES DEL CONSTRUCTOR
-        else return null;
+        else 
+        {
+            throw new AliesNoExisteix(usuari);
+
+        }
     }
+
+    
+
 
 
 
