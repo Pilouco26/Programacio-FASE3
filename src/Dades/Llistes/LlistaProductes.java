@@ -4,8 +4,9 @@ package Dades.Llistes;
 import Dades.Classes.Bens;
 import Dades.Classes.Producte;
 import Dades.Classes.Servei;
+import java.io.Serializable;
 
-public class LlistaProductes {
+public class LlistaProductes implements Serializable {
     private Producte[] llista;
     private int nElem;
 
@@ -231,6 +232,29 @@ public class LlistaProductes {
 			else i++;
 		}
 	}
+    public boolean EsUnBe(String codi)
+    {
+        
+        int i=0;
+		while(i<nElem)
+		{
+            if(llista[i].getCodi().equals(codi) && llista[i] instanceof Bens) return true;
+            else i++;
+        }
+        return false;
+    }
+    public Bens RetornaUnBe(String codi)
+    {
+        
+        int i=0;
+		while(i<nElem)
+		{
+            if(llista[i] instanceof Bens && llista[i].getCodi().equals(codi)) return ((Bens)llista[i]);
+            else i++;
+        }
+        return null;
+    }
+   
    
     public int getnElem()
     {

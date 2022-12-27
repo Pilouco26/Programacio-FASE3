@@ -1,8 +1,11 @@
 package Dades.Llistes;
-
+import java.io.Serializable;
+import Dades.Classes.Bens;
+import Dades.Classes.Data;
 import Dades.Classes.Intercanvi;
+import Dades.Classes.Usuari;
 
-public class LlistaIntercanvis {
+public  class LlistaIntercanvis implements Serializable{
     private Intercanvi[] llista;
     private int nElem;
 
@@ -27,7 +30,8 @@ public class LlistaIntercanvis {
             nElem++;
         }
     }
-    public void AcepRefusarIntercanvi(boolean resposta, int codi, int ivaloracio, int ovaloracio)
+    
+    public void AcepRefusarIntercanvi(boolean resposta, int codi, int ivaloracio, int ovaloracio, LlistaProductes p1)
     {
         boolean trobat= false;
         int i=0; 
@@ -41,10 +45,123 @@ public class LlistaIntercanvis {
             llista[i].setResposta(resposta);
             llista[i].setTrato(true);
             llista[i].setIvaloracio(ivaloracio);
-            llista[i].setOvaloracio(ovaloracio);
+            llista[i].setOvaloracio(ovaloracio);                                //si es un bé posar el estat en intercanviat
+            if(p1.EsUnBe(llista[i].getDemanat().getCodi())&& resposta) {
+
+                Bens b1 =  p1.RetornaUnBe(llista[i].getDemanat().getCodi());
+                b1.Intercanviat();
+                Data d1 = new Data(0, 0, 0);
+                d1.DataActual();
+                b1.setData(d1);
+
+            }
+            if(p1.EsUnBe(llista[i].getOferit().getCodi())&& resposta) {
+
+                Bens b1 =  p1.RetornaUnBe(llista[i].getOferit().getCodi());
+                b1.Intercanviat();
+                Data d1 = new Data(0, 0, 0);
+                d1.DataActual();
+                b1.setData(d1);
+            if(resposta)
+            {
+                llista[i].getContesta().AddValoració(ovaloracio);
+                llista[i].getInteressat().AddValoració(ivaloracio);
+            }
+
+            }
         }
 
     }
+
+    public boolean Verificador(int codi, Usuari contesta)
+    {
+        int i =0;
+        boolean trobat = false;
+
+        while(i<nElem && !trobat)
+        {
+            if(codi == llista[i].getCodi()) trobat = true;
+            else i++;
+        }
+
+        if(trobat)
+        {
+            if(llista[i].getContesta().getAlies().equals(contesta.getAlies())) return true;
+            else return false;
+        }
+        else return false;
+    }
+
+    public Usuari TrobaInteressat( int codi)
+    {
+        for(int i = 0; i<llista.length; i++)
+        {
+            
+            if(llista[i].getCodi()==codi) return llista[i].getInteressat();
+
+        }
+        
+        return null;
+
+
+    }
+
+    public LlistaIntercanvis getPendents()
+    {
+        LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
+
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i].getTrato()==false)
+            {
+                aux.AfegirIntercanvi(llista[i]);
+            }
+        }
+
+        return aux;
+    }
+    public LlistaIntercanvis getAcceptades()
+    {
+        LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
+
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i].getTrato()==true && llista[i].getResposta() == true)
+            {
+                aux.AfegirIntercanvi(llista[i]);
+            }
+        }
+
+        return aux;
+    }
+
+    public LlistaIntercanvis getRebutjades()
+    {
+        LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
+
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i].getTrato()==true && llista[i].getResposta() == false)
+            {
+                aux.AfegirIntercanvi(llista[i]);
+            }
+        }
+
+        return aux;
+    }
+
+    public LlistaIntercanvis TrobaUsuariIntercanvis(Usuari usuari)
+    {
+        LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
+        for(int i = 0;  i<llista.length; i++)
+        {
+            if(llista[i].getContesta().equals(usuari) || llista[i].getInteressat().equals(usuari)) aux.AfegirIntercanvi(llista[i]);
+        }
+
+        return aux;
+    }
+
+    
     @Override
     public String toString() {
 
