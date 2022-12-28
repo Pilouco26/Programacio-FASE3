@@ -17,21 +17,27 @@ public class Interficie extends JFrame {
     private JButton b1 = new JButton("LLISTES");
     private JButton b2 = new JButton("INTERCANVIS");
     private JButton b3 = new JButton("USUARI");
+    private JButton b5 = new JButton("Afegir petició intercanvi");
+    private JButton b6 = new JButton("Canviar usuari");
     private Botó b4 = new Botó("ANARMEN A PRENDRE PEL CUL");
     private JTextArea missatge;
    
-    public Interficie(String titol, LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU) {
+    public Interficie(String titol, LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU, String alies) {
         super(titol);
         this.setLayout(new BorderLayout(15, 15));
         missatge=new JTextArea("Resultat de la consulta:\n");
         missatge.setSize(this.getWidth(), 300);
         missatge.setText("");
         this.add(missatge, BorderLayout.CENTER);
-        AccioDelBoto accio = new AccioDelBoto(missatge,  llistaI,  llistaP,  llistaU);
+        AccioDelBoto accio = new AccioDelBoto(missatge,  llistaI,  llistaP,  llistaU, alies);
+        IntercanvisBoto botox = new IntercanvisBoto(missatge, llistaI, llistaP, llistaU, alies);
+        CanviarUsuari b = new CanviarUsuari(missatge, llistaI, llistaP, llistaU, alies);
         b1.addActionListener(accio);
         b2.addActionListener(accio);
         b3.addActionListener(accio);
         b4.addActionListener(accio);
+        b5.addActionListener(botox);
+        b6.addActionListener(b);
                                                     // Forcem la disposició dels objectes continguts en el panell
         panellBotons.setLayout(new FlowLayout());
         panellBotons.add(b1); // Afegim els botons al panell
@@ -39,6 +45,8 @@ public class Interficie extends JFrame {
         this.add(panellBotons, BorderLayout.NORTH);
         panellBotons2.add(b3);
         panellBotons2.add(b4);
+        panellBotons2.add(b6);
+        panellBotons.add(b5);
         this.add(panellBotons2, BorderLayout.SOUTH);
         
         this.setLocation(200, 200);
@@ -46,6 +54,6 @@ public class Interficie extends JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
     }
-
+    
 }
 

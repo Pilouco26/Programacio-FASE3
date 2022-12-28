@@ -13,7 +13,7 @@ public class AccioDelBoto implements ActionListener {
 
 private JTextArea missatge; 
 private LlistaIntercanvis LlistaI;  
-    public AccioDelBoto(JTextArea missatge, LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU)
+    public AccioDelBoto(JTextArea missatge, LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU, String alies)
     {
       this.missatge = missatge;
       LlistaI = llistaI;

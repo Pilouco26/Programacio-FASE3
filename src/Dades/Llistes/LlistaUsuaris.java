@@ -69,6 +69,23 @@ public class LlistaUsuaris implements Serializable{
 
         }
     }
+    public boolean TrobaUsuariR(String usuari) 
+    {
+        boolean trobat= false;
+        int i=0;       
+        while(i<nElem && !trobat)
+        {
+            if(llista[i].getAlies().equals(usuari))
+            {   
+                 return true;
+                
+            }
+            else i++;
+        }
+        
+        return false;//ENRECORDARSE DE PPOSAR LO QUE NO ES DEL CONSTRUCTOR
+        
+    }
 
     
 

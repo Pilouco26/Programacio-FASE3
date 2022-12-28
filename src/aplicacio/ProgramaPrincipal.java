@@ -24,7 +24,7 @@ public class ProgramaPrincipal {
         llistaU = readDataR(llistaU);
         llistaI = LlegirIntercanvisR(llistaI, llistaP, llistaU);
         ProvaFinestra(llistaI, llistaP, llistaU);
-        ProgramaPrincipal2();
+        ProgramaPrincipal2(llistaI, llistaP, llistaU);
 
        
 
@@ -33,36 +33,34 @@ public class ProgramaPrincipal {
     private static void ProvaFinestra(LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU)
     {
         boolean acceptat=false; 
-        String contrasenya= "2023";
+        String nom = "";
+        
         ImageIcon alonso= new ImageIcon("alonso.jpg");
         while (!acceptat) {
 
-				String nom = JOptionPane.showInputDialog(null, "Indica l'any en el que Alonso guanyara el tricampeonato:", "NANOCONTRASENYA", JOptionPane.QUESTION_MESSAGE);
+				 nom = JOptionPane.showInputDialog(null, "Indica el teu alies: ", "NANOCONTRASENYA", JOptionPane.QUESTION_MESSAGE);
 
-				while (!nom.equals(contrasenya)) {
+				while (!llistaU.TrobaUsuariR(nom)) {
 					// Missatge d'error.
 					JOptionPane.showMessageDialog(null, "JAJAJAJ MARICONA, NO POTS ENTRAR", "ESTEBAN MOJON DETECTED", JOptionPane.ERROR_MESSAGE, alonso);
 					nom = JOptionPane.showInputDialog("Torna-hi maquina!");
 				}
                 acceptat = true;
         }
-        new Interficie("Yessir", llistaI,  llistaP,  llistaU );
+        new Interficie("Yessir", llistaI,  llistaP,  llistaU, nom);
 
     }
 
-    private static void ProgramaPrincipal2() throws FileNotFoundException, AliesNoExisteix
+    private static void ProgramaPrincipal2(LlistaIntercanvis LListaI, LlistaProductes s2, LlistaUsuaris l2) throws FileNotFoundException, AliesNoExisteix
     {
         System.out.println(DataActual().toString());
-        LlistaUsuaris l1 = new LlistaUsuaris(4000); 
-        LlistaProductes s1  = new LlistaProductes(4000);
-        LlistaIntercanvis i1 = new LlistaIntercanvis(4000);
+        LlistaUsuaris l1 = l2;
+        LlistaProductes s1  = s2;
+        LlistaIntercanvis i1 = LListaI;
         boolean sortir = false;
         boolean tornar = false; 
        
 
-
-        Llegir(i1, s1, l1);
-        LlegirIntercanvis(i1, s1, l1);  
     
 
     while(!sortir) 
