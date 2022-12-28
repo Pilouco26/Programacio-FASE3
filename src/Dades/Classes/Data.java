@@ -5,6 +5,9 @@ package Dades.Classes;
  * @author Professores de programacio.
  *
  */
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.util.*;
 
 public class Data {
 	private int dia;
@@ -237,4 +240,14 @@ public class Data {
 	public Data copia() {
 		return new Data(dia, mes, any);
 	}
+	public void DataActual()
+    {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDateTime now = LocalDateTime.now();
+        StringTokenizer dat = new StringTokenizer(dtf.format(now), "/");
+        int dia =  Integer.parseInt(dat.nextToken());  
+        int mes =  Integer.parseInt(dat.nextToken());
+        int any =  Integer.parseInt(dat.nextToken());
+        setData(dia, mes, any);
+    }
 }
