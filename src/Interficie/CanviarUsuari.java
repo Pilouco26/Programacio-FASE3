@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 public class CanviarUsuari implements ActionListener {
 
 private LlistaUsuaris LlistaU; 
+private String nom;
 public  CanviarUsuari(JTextArea missatge, LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU, String alies)
     {
       LlistaU = llistaU;
@@ -21,7 +22,7 @@ public  CanviarUsuari(JTextArea missatge, LlistaIntercanvis llistaI, LlistaProdu
     }
 
     public void actionPerformed(ActionEvent evt) {
-    String nom = JOptionPane.showInputDialog(null, "Qui ets?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
+    nom = JOptionPane.showInputDialog(null, "Qui ets?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
     try {
          LlistaU.TrobaUsuari(nom);
     } catch (AliesNoExisteix e) {
@@ -34,7 +35,7 @@ public  CanviarUsuari(JTextArea missatge, LlistaIntercanvis llistaI, LlistaProdu
 
     public String CanviarAlies()
     {
-        String nom = JOptionPane.showInputDialog(null, "Qui ets?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
+        
         return nom;
     }
 

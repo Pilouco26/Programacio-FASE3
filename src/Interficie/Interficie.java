@@ -35,9 +35,10 @@ public class Interficie extends JFrame {
         b3.addActionListener(intercanvisBoto);
         b5.addActionListener(intercanvisBoto);
         b6.addActionListener(b);
+        
                                                     // Forcem la disposició dels objectes continguts en el panell
         panellBotons.setLayout(new FlowLayout());
-                        // Afegim els botons al panell
+                                                    // Afegim els botons al panell
         panellBotons.add(b2);
         this.add(panellBotons, BorderLayout.NORTH);
         panellBotons2.add(b3);
@@ -50,6 +51,7 @@ public class Interficie extends JFrame {
         this.setSize(700,400);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
+       
     }
     
 }

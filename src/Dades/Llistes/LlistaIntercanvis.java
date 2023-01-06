@@ -22,11 +22,18 @@ public  class LlistaIntercanvis implements Serializable{
 
         if(nElem<llista.length)
         {
-            llista[nElem] = i.copia();
-            llista[nElem].setTrato(i.getTrato());
-            llista[nElem].setResposta(i.getResposta());
-            llista[nElem].setOvaloracio(i.getOvaloracio());
-            llista[nElem].setIvaloracio(i.getIvaloracio());
+        	int pos = nElem - 1;
+        	while ((pos >= 0) && llista[pos].getCodi()>(i.getCodi())) {
+				llista[pos + 1] = llista[pos];
+				pos--;
+			}
+			llista[pos + 1] = i.copia();
+            llista[pos + 1].setTrato(i.getTrato());
+            llista[pos + 1].setResposta(i.getResposta());
+            llista[pos + 1].setIvaloracio(i.getIvaloracio());
+            llista[pos + 1].setOvaloracio(i.getOvaloracio());
+
+
             nElem++;
         }
     }

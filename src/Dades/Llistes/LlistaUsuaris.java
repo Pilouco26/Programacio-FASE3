@@ -37,9 +37,14 @@ public class LlistaUsuaris implements Serializable{
             }
             if(!repetit)
             {
-                llista[nElem]= a.copia();
-                llista[nElem].setNumProductes(a.getNumProductes());
-                llista[nElem].setnumIntercanvis(a.getIntercanvis());
+    			int pos = nElem - 1;
+            	while ((pos >= 0) && llista[pos].getAlies().compareToIgnoreCase(a.getAlies()) > 0) {
+    				llista[pos + 1] = llista[pos];
+    				pos--;
+    			}
+    			llista[pos + 1] = a.copia();
+                llista[pos + 1].setNumProductes(a.getNumProductes());
+                llista[pos + 1].setnumIntercanvis(a.getIntercanvis());
                 nElem++;
             }
             else

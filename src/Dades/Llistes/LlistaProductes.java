@@ -21,19 +21,25 @@ public class LlistaProductes implements Serializable {
     {
         if(nElem<llista.length)
         {
-            llista[nElem]= p.copia();
+            int pos = nElem - 1;
+        	while ((pos >= 0) && llista[pos].getNom().compareToIgnoreCase(p.getNom()) > 0) {
+				llista[pos + 1] = llista[pos];
+				pos--;
+			}
+			llista[pos + 1] = p.copia();
+    
             
             if(p instanceof Servei)
             {
-                ((Servei)llista[nElem]).setActiu(((Servei)p).getActiu());
+                ((Servei)llista[pos + 1]).setActiu(((Servei)p).getActiu());
             }
             if(p instanceof Bens)
             {
-                ((Bens)llista[nElem]).setIntercanvi(((Bens)p).getIntercanvi());
+                ((Bens)llista[pos + 1]).setIntercanvi(((Bens)p).getIntercanvi());
                 
-                if(((Bens)llista[nElem]).getIntercanvi())
+                if(((Bens)llista[pos + 1]).getIntercanvi())
                 {
-                    ((Bens)llista[nElem]).setData(((Bens)llista[nElem]).getData());
+                    ((Bens)llista[pos + 1]).setData(((Bens)llista[pos + 1]).getData());
                 }
             }
             nElem++;
