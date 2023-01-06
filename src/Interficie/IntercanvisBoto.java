@@ -36,31 +36,46 @@ private Usuari actual;
 
     public void actionPerformed(ActionEvent evt) {
     JButton b = (JButton) evt.getSource();
-    try {
-         actual = LlistaU.TrobaUsuari(alies);
-    } catch (AliesNoExisteix e) {
-
-        System.out.println("AYO, l'alies no existeix");
-    }
     
-    String nom = JOptionPane.showInputDialog(null, "Amb qui vols fer negocis?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
-    try {
-         demanat = LlistaU.TrobaUsuari(nom);
-    } catch (AliesNoExisteix e) {
-        
-        System.out.println("AYO, l'alies no existeix");
+
+    if(b.getText().equals("Afegir petició intercanvi"))
+    {
+        try {
+            actual = LlistaU.TrobaUsuari(alies);
+       } catch (AliesNoExisteix e) {
+   
+           System.out.println("AYO, l'alies no existeix");
+       }
+       
+       String nom = JOptionPane.showInputDialog(null, "Amb qui vols fer negocis?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
+       try {
+            demanat = LlistaU.TrobaUsuari(nom);
+       } catch (AliesNoExisteix e) {
+           
+           System.out.println("AYO, l'alies no existeix");
+       }
+       String producte1 = JOptionPane.showInputDialog(null, "que vols donar?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
+   
+       Producte ProducteA = LlistaP.TrobaCodi(producte1);
+   
+       String producte2 = JOptionPane.showInputDialog(null, "que vols rebre?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
+   
+       Producte ProducteB = LlistaP.TrobaCodi(producte2);
+   
+       Intercanvi a = new Intercanvi(GenCodiIntercanvi(), actual, demanat, ProducteA, ProducteB);
+   
+       LlistaI.AfegirIntercanvi(a);
     }
-    String producte1 = JOptionPane.showInputDialog(null, "que vols donar?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
+    else 
+    {
+        try {
+            new IntercanvisJFrame( LlistaI, LlistaP, LlistaU, alies);
+        } catch (AliesNoExisteix e) {
+            
+            
+        }
+    }
 
-    Producte ProducteA = LlistaP.TrobaCodi(producte1);
-
-    String producte2 = JOptionPane.showInputDialog(null, "que vols rebre?", "Intercanvis", JOptionPane.QUESTION_MESSAGE);
-
-    Producte ProducteB = LlistaP.TrobaCodi(producte2);
-
-    Intercanvi a = new Intercanvi(GenCodiIntercanvi(), actual, demanat, ProducteA, ProducteB);
-
-    LlistaI.AfegirIntercanvi(a);
     }
    
     public  int GenCodiIntercanvi()

@@ -120,6 +120,20 @@ public  class LlistaIntercanvis implements Serializable{
 
         return aux;
     }
+    public LlistaIntercanvis getIntercanviades()
+    {
+        LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
+
+        for(int i=0; i<nElem; i++)
+        {
+            if(llista[i].getTrato()==true)
+            {
+                aux.AfegirIntercanvi(llista[i]);
+            }
+        }
+
+        return aux;
+    }
     public LlistaIntercanvis getAcceptades()
     {
         LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
@@ -150,17 +164,28 @@ public  class LlistaIntercanvis implements Serializable{
         return aux;
     }
 
-    public LlistaIntercanvis TrobaUsuariIntercanvis(Usuari usuari)
+    public LlistaIntercanvis TrobaUsuariIntercanvis(String alies)
     {
         LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
-        for(int i = 0;  i<llista.length; i++)
+        for(int i = 0;  i<nElem; i++)
         {
-            if(llista[i].getContesta().equals(usuari) || llista[i].getInteressat().equals(usuari)) aux.AfegirIntercanvi(llista[i]);
+            if(llista[i].getContesta().getAlies().equals(alies) || llista[i].getInteressat().getAlies().equals(alies)) aux.AfegirIntercanvi(llista[i]);
         }
 
         return aux;
     }
 
+    
+
+    public int getnElem()
+    {
+        return nElem;
+    }
+    public Intercanvi getLlista (int pos) {
+        if (pos>=0 && pos<nElem) return llista[pos];
+        else return null;
+        }
+    
     
     @Override
     public String toString() {

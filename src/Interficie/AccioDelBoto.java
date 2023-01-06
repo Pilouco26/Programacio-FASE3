@@ -22,7 +22,7 @@ private LlistaIntercanvis LlistaI;
     public void actionPerformed(ActionEvent evt) {
     JButton b = (JButton) evt.getSource();
     String s = b.getText();
-    if(s.equals("INTERCANVIS")){
+    if(s.equals("Intercanvis")){
         missatge.append(""+LlistaI.getPendents().toStringMaco()+"\n");                      //ME DONA NULL FALTA REVISAR
     }
     else{

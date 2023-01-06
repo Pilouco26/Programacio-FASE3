@@ -1,3 +1,6 @@
-5387;ham;alo;FSFLFF;EGEGEG;false;false;0;0
-1432;alo;ham;ASDPAS;DSFSDF;false;false;0;0
-9782;alo;ham;ASDASD;SDLKFL;false;false;0;0
+5387;ham;alo;FSFLFF;EGEGEG;true;true;5;5
+1432;alo;ham;ASDPAS;DSFSDF;true;true;1;1
+9782;alo;ham;ASDASD;SDLKFL;true;true;4;4
+1764;ros;alo;FFKSLK;DSFSDF;true;true;4;4
+2209;alo;but;QPKQPF;PDFSLP;true;true;1;4
+6638;vet;ros;ASASDS;ASDASD;true;true;1;2

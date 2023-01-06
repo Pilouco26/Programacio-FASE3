@@ -89,6 +89,7 @@ public final class  Usuari implements Serializable{            //final pq no vol
     {
         return "Alies: "+alies+" Email: "+email+" Codi Postal: "+cp+" Numero de productes: "+numProductes+" Numeros d'intercanvis: "+numIntercanvis+"\n Valoració:"+MitjanaValoració()+" \n";
     }
+    
 
 
 }

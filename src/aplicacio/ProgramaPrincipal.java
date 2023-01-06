@@ -16,7 +16,7 @@ import Interficie.Interficie;
 public class ProgramaPrincipal {
     static Scanner teclat = new Scanner(System.in);
  
-    public static void main(String[] args) throws FileNotFoundException, AliesNoExisteix{
+    public static void main(String[] args) throws FileNotFoundException, AliesNoExisteix, AliesRepetit{
         LlistaUsuaris llistaU = new LlistaUsuaris(4000); 
         LlistaProductes llistaP  = new LlistaProductes(4000);
         LlistaIntercanvis llistaI = new LlistaIntercanvis(4000);
@@ -51,7 +51,7 @@ public class ProgramaPrincipal {
 
     }
 
-    private static void ProgramaPrincipal2(LlistaIntercanvis LListaI, LlistaProductes s2, LlistaUsuaris l2) throws FileNotFoundException, AliesNoExisteix
+    private static void ProgramaPrincipal2(LlistaIntercanvis LListaI, LlistaProductes s2, LlistaUsuaris l2) throws FileNotFoundException, AliesNoExisteix, AliesRepetit
     {
         System.out.println(DataActual().toString());
         LlistaUsuaris l1 = l2;
@@ -174,6 +174,8 @@ public class ProgramaPrincipal {
 
                                 Intercanvi  IntercanviNou = AfegirIntercanvi(l1, s1);
                                 i1.AfegirIntercanvi(IntercanviNou);
+
+                                System.out.println("Identificador del intercanvi: "+IntercanviNou.getCodi());
                                 Escriure(i1, s1, l1);
 
                                 break;
@@ -280,7 +282,9 @@ public class ProgramaPrincipal {
 
 
                         case 2: 
-
+                        System.out.println("Quina es la valoració minima que busques?");
+                        double val = Double.parseDouble(teclat.nextLine());
+                        System.out.println(l1.LlindarUsuari(val).toString());
                         Escriure(i1, s1, l1);
                         break;
 
@@ -705,20 +709,7 @@ public class ProgramaPrincipal {
 
     }
 
-    public static Usuari ReadU(Scanner file) 
-    {
-        int cp;
-        String Alies, email, Usuari;       
-        Usuari= file.nextLine();
-        
-            StringTokenizer prova = new StringTokenizer(Usuari, ";");
-            Alies = prova.nextToken();
-            email = prova.nextToken();
-            cp = Integer.parseInt(prova.nextToken());
-           return new Usuari(Alies, email, cp);
 
-
-    }
 
     public static void WriteS(LlistaProductes s1)
     {

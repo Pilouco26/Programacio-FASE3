@@ -4,10 +4,10 @@ package Dades.Classes;
  * Padreada de las gordas pq es la classe pare
  * @authors Miguel Lopes, Ivan Garcia , Pere Escoda i Adrià Sanjuan
  */
-public abstract class Producte {    //no volem obtenir fer res
+public abstract class Producte {    
 
     protected  String nom;
-    protected  String descripcio;               //0   bens 1 serveis
+    protected  String descripcio;               
     protected  Data data; 
     protected  String codi;
 

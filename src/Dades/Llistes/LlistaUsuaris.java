@@ -87,7 +87,15 @@ public class LlistaUsuaris implements Serializable{
         
     }
 
-    
+    public LlistaUsuaris LlindarUsuari(double valoració) throws AliesRepetit
+    {
+        LlistaUsuaris aux = new LlistaUsuaris(nElem);
+        for(int i=0; i<nElem; i++)
+        {
+            if(valoració<= llista[i].MitjanaValoració()) aux.AfegirUsuari(llista[i]); 
+        }
+        return aux;
+    }
 
 
 
