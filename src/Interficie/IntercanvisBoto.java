@@ -1,7 +1,5 @@
 package Interficie;
-
 import javax.swing.*;
-
 import Dades.Classes.Intercanvi;
 import Dades.Classes.Producte;
 import Dades.Classes.Usuari;
@@ -9,13 +7,17 @@ import Dades.Llistes.LlistaIntercanvis;
 import Dades.Llistes.LlistaProductes;
 import Dades.Llistes.LlistaUsuaris;
 import Exception.AliesNoExisteix;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Classe IntercavisBoto
+ * 
+ * @author Grup
+ *
+ */
 public class IntercanvisBoto implements ActionListener {
 
-private JTextArea missatge; 
 private LlistaIntercanvis LlistaI; 
 private LlistaUsuaris LlistaU;   
 private LlistaProductes LlistaP;
@@ -23,9 +25,16 @@ private String alies;
 private Usuari demanat;
 private Usuari actual;
 
+/**
+ * Constructor
+ * @param missatge
+ * @param llistaI
+ * @param llistaP
+ * @param llistaU
+ * @param alies
+ */
     public IntercanvisBoto(JTextArea missatge, LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU, String alies)
     {
-      this.missatge = missatge;
       LlistaI = llistaI;
       LlistaU = llistaU;
       LlistaP = llistaP;
@@ -33,7 +42,9 @@ private Usuari actual;
      
     }
     
-
+    /**
+     * action performed
+     */
     public void actionPerformed(ActionEvent evt) {
     JButton b = (JButton) evt.getSource();
     
@@ -77,7 +88,10 @@ private Usuari actual;
     }
 
     }
-   
+    /**
+     * generador de codi
+     * @return codi
+     */
     public  int GenCodiIntercanvi()
     {
         int min =0;

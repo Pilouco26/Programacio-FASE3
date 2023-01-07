@@ -1,16 +1,18 @@
 package Interficie;
-
 import javax.swing.*;
-
 import Dades.Llistes.LlistaIntercanvis;
 import Dades.Llistes.LlistaProductes;
 import Dades.Llistes.LlistaUsuaris;
 import Exception.AliesNoExisteix;
-import Dades.*;
 import Dades.Classes.Usuari;
-
 import java.awt.*;
 
+/**
+ * Classe FINESTRA INTERCANVIS
+ * 
+ * @author Grup
+ *
+ */
 public class IntercanvisJFrame extends JFrame {
 
     private static final long serialVersionUID = 2L;
@@ -18,6 +20,14 @@ public class IntercanvisJFrame extends JFrame {
     private JPanel panelButtons = new JPanel();
     private JTextArea info = new JTextArea();
     private Usuari actual;
+    /**
+     * contructor
+     * @param llistaI
+     * @param llistaP
+     * @param llistaU
+     * @param alies
+     * @throws AliesNoExisteix
+     */
     public IntercanvisJFrame(LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU, String alies) throws AliesNoExisteix {
     super();
     setSize(700,500);
@@ -50,7 +60,7 @@ public class IntercanvisJFrame extends JFrame {
             else b.setBackground(Color.red);
         }
 
-        PopPop Pop = new PopPop(info, l, i);
+        Llista Pop = new Llista(info, l, i);
             b.addActionListener(Pop);
             panelButtons.add(b);
     

@@ -1,14 +1,13 @@
 package Interficie;
-
 import javax.swing.*;
-
 import Dades.Llistes.LlistaIntercanvis;
 import Dades.Llistes.LlistaProductes;
 import Dades.Llistes.LlistaUsuaris;
-import Dades.*;
-
 import java.awt.*;
-
+/**
+ * Classe finestra principal
+ * @author grup
+ */
 public class Interficie extends JFrame {
 
     private static final long serialVersionUID = 1L;
@@ -20,7 +19,14 @@ public class Interficie extends JFrame {
     private JButton b6 = new JButton("Canviar usuari");
    
     private JTextArea missatge;
-   
+    /**
+     * Constructor
+     * @param titol
+     * @param llistaI
+     * @param llistaP
+     * @param llistaU
+     * @param alies
+     */
     public Interficie(String titol, LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU, String alies) {
         super(titol);
         this.setLayout(new BorderLayout(15, 15));
