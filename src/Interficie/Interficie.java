@@ -36,7 +36,7 @@ public class Interficie extends JFrame {
         this.add(missatge, BorderLayout.CENTER);
         AccioDelBoto accio = new AccioDelBoto(missatge,  llistaI,  llistaP,  llistaU, alies);
         IntercanvisBoto intercanvisBoto = new IntercanvisBoto(missatge, llistaI, llistaP, llistaU, alies);
-        CanviarUsuari b = new CanviarUsuari(missatge, llistaI, llistaP, llistaU, alies);
+        CanviarUsuari b = new CanviarUsuari(this, llistaI, llistaP, llistaU);
         b2.addActionListener(accio);
         b3.addActionListener(intercanvisBoto);
         b5.addActionListener(intercanvisBoto);
@@ -45,12 +45,14 @@ public class Interficie extends JFrame {
                                                     // Forcem la disposició dels objectes continguts en el panell
         panellBotons.setLayout(new FlowLayout());
                                                     // Afegim els botons al panell
+       
+        panellBotons.add(b5);
         panellBotons.add(b2);
         this.add(panellBotons, BorderLayout.NORTH);
         panellBotons2.add(b3);
       
         panellBotons2.add(b6);
-        panellBotons.add(b5);
+        
         this.add(panellBotons2, BorderLayout.SOUTH);
 
         this.setLocation(200, 200);
@@ -60,5 +62,11 @@ public class Interficie extends JFrame {
        
     }
     
+
+    public void actualitzarFrame(LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU, String alies)
+    {
+        this.setVisible(false);
+        new Interficie("Interficie", llistaI, llistaP, llistaU, alies);
+    }
 }
 
