@@ -1,5 +1,10 @@
 package Dades.Llistes;
-
+/**
+ * Classe llista productes
+ * 
+ * @author Grup
+ *
+ */
 
 import Dades.Classes.Bens;
 import Dades.Classes.Producte;
@@ -11,12 +16,18 @@ public class LlistaProductes implements Serializable {
     private int nElem;
 
 
-
+    /**
+     * constructor LlistaProductes
+     * @param mida
+     */
     public LlistaProductes(int mida){           
         llista = new Producte[mida];
         nElem=0;
     }
-
+    /**
+     * Afegeix productes
+     * @param producte
+     */
     public void afegirProductes(Producte p)                 //cal ordenar-ho per nom
     {
         if(nElem<llista.length)
@@ -44,7 +55,12 @@ public class LlistaProductes implements Serializable {
             }
             nElem++;
         }
-    }    
+    } 
+    /**
+     * Comprova si el producte esta repetit
+     * @param codi
+     * @return veritat o fals
+     */  
     public boolean ProducteRepetit(String codi)
     {
         boolean repetit=false;
@@ -60,7 +76,10 @@ public class LlistaProductes implements Serializable {
         return repetit;
     }
 
-
+    /**
+     * Esborrar un producte
+     * @param nom del producte
+     */
     public void esborraP(String nom)
     {
         boolean erased= true;
@@ -80,6 +99,14 @@ public class LlistaProductes implements Serializable {
             else i++;
         }
     }
+
+
+
+
+    /**
+     * Retorna una llista de serveis actius
+     * @return Serveis actius
+     */
     public LlistaProductes ServeisActius()
     {
         LlistaProductes SerActiu= new LlistaProductes(getActius());
@@ -94,7 +121,10 @@ public class LlistaProductes implements Serializable {
 
         return SerActiu;
     }
-
+    /**
+     * Bens actius
+     * @return llista
+     */
     public LlistaProductes BensActius()
     {
         LlistaProductes BeActiu= new LlistaProductes(getIntercanviables());
@@ -108,7 +138,10 @@ public class LlistaProductes implements Serializable {
 
         return BeActiu;
     }
-
+    /**
+     * getter serveis
+     * @return llista
+     */
     public LlistaProductes GetServeis()
     {
         LlistaProductes Serveis= new LlistaProductes(getnumServeis());
@@ -121,7 +154,10 @@ public class LlistaProductes implements Serializable {
         }
         return Serveis;
     }
-
+    /**
+     * getter bens
+     * @return llista
+     */
     public LlistaProductes GetBens()
     {
         LlistaProductes Bens= new LlistaProductes(getnumBens());
@@ -134,7 +170,10 @@ public class LlistaProductes implements Serializable {
         }
         return Bens;
     }
-
+    /**
+     * getter productes actius
+     * @return llista
+     */
     public int getActius()
     {
         int mida=0;
@@ -147,6 +186,10 @@ public class LlistaProductes implements Serializable {
         }
         return mida;
     }
+    /**
+     * getter numero de serveis
+     * @return numero
+     */
     public int getnumServeis()
     {
         int mida=0;
@@ -159,7 +202,10 @@ public class LlistaProductes implements Serializable {
         }
         return mida;
     }
-
+      /**
+     * getter numero de bens
+     * @return numero
+     */
     public int getnumBens()
     {
         int mida=0;
@@ -172,7 +218,11 @@ public class LlistaProductes implements Serializable {
         }
         return mida;
     }
-
+    /**
+     * Busca un producte 
+     * @param codi
+     * @return producte
+     */
     public Producte TrobaCodi(String codi)
     {
         boolean trobat = false;
@@ -185,7 +235,11 @@ public class LlistaProductes implements Serializable {
         if(trobat) return llista[i];                                    //ENRECORDARSE DE PPOSAR LO QUE NO ES DEL CONSTRUCTOR
         else return null;
     }
-
+    /**
+     * Comprova l'existencia d'un producte
+     * @param codi
+     * @return
+     */
     public boolean CercaCodi(String codi)
     {
         boolean trobat = false;
@@ -197,6 +251,11 @@ public class LlistaProductes implements Serializable {
         }
         return trobat;
     }   
+    /**
+     * Busca un servei
+     * @param codi
+     * @return posicio
+     */
     public int CercaCodiS(String codi)
     {
         boolean trobat = false;
@@ -208,6 +267,11 @@ public class LlistaProductes implements Serializable {
         }
         return -1;
     }  
+    /**
+     * Dona de baixa un servei
+     * @param codi
+     * @param pos
+     */
     public void DonarBaixaServei(String codi, int pos)
     {
     
@@ -216,6 +280,10 @@ public class LlistaProductes implements Serializable {
     
 
     }
+    /**
+     * Dona de baixa un be
+     * @param codi
+     */
     public void DonarBaixaBe (String codi)
 	{
 		int i=0;
@@ -238,6 +306,11 @@ public class LlistaProductes implements Serializable {
 			else i++;
 		}
 	}
+    /**
+     * Comprova si el producte es un be
+     * @param codi
+     * @return cert o fals
+     */
     public boolean EsUnBe(String codi)
     {
         
@@ -249,6 +322,11 @@ public class LlistaProductes implements Serializable {
         }
         return false;
     }
+    /**
+     * Retorna un be a partir d'un codi
+     * @param codi
+     * @return be
+     */
     public Bens RetornaUnBe(String codi)
     {
         
@@ -261,12 +339,18 @@ public class LlistaProductes implements Serializable {
         return null;
     }
    
-   
+   /**
+    * get mida llista
+    * @return mida
+    */
     public int getnElem()
     {
         return nElem;
     }
-
+    /**
+     * getter productes intercanviables
+     * @return numero
+     */
     public int getIntercanviables()
     {
         int mida =0;
@@ -278,6 +362,11 @@ public class LlistaProductes implements Serializable {
 
         return mida;
     }
+    /**
+     * Comprova si el producte es intercanviable
+     * @param codi
+     * @return
+     */
     public boolean intercanviable(String codi)
     {
         
@@ -315,7 +404,10 @@ public class LlistaProductes implements Serializable {
         }
         
     }
-
+    /**
+     * Tostring per la consola
+     * @return to string
+     */
     public String toStringMaco() {
 
         if(nElem==0)

@@ -1,25 +1,37 @@
 package Dades.Llistes;
-
-
 import java.io.Serializable;
-
-
 import Dades.Classes.Usuari;
 import Exception.AliesNoExisteix;
 import Exception.AliesRepetit;
+
+/**
+ * Classe llista Usuaris
+ * 
+ * @author Grup
+ *
+ */
+
+
 public class LlistaUsuaris implements Serializable{
     
     private Usuari[] llista;
     private int nElem;
 
 
-
+    /**
+     * Constructor llista usuaris
+     * @param mida
+     */
     public LlistaUsuaris(int mida){
 
         llista= new Usuari[mida];
         nElem =0;
     }
-
+    /**
+     * Afegeix usuari, comprova que no estigui repetit
+     * @param a
+     * @throws AliesRepetit
+     */
     public void AfegirUsuari(Usuari a) throws AliesRepetit{                         //Cal ordenar-ho per nom
         boolean repetit= false;
         int i=0;
@@ -54,6 +66,12 @@ public class LlistaUsuaris implements Serializable{
            
         }
     }
+    /**
+     * Busca usuari
+     * @param usuari
+     * @return usuari
+     * @throws AliesNoExisteix
+     */
     public Usuari TrobaUsuari(String usuari) throws AliesNoExisteix
     {
         boolean trobat= false;
@@ -74,6 +92,11 @@ public class LlistaUsuaris implements Serializable{
 
         }
     }
+    /**
+     * Comprova existencia usuari
+     * @param usuari
+     * @return cert o fals
+     */
     public boolean TrobaUsuariR(String usuari) 
     {
         boolean trobat= false;
@@ -91,7 +114,12 @@ public class LlistaUsuaris implements Serializable{
         return false;//ENRECORDARSE DE PPOSAR LO QUE NO ES DEL CONSTRUCTOR
         
     }
-
+    /**
+     * Retorna llista que compleix amb usuari
+     * @param valoració
+     * @return llista
+     * @throws AliesRepetit
+     */
     public LlistaUsuaris LlindarUsuari(double valoració) throws AliesRepetit
     {
         LlistaUsuaris aux = new LlistaUsuaris(nElem);
@@ -107,13 +135,20 @@ public class LlistaUsuaris implements Serializable{
 
 
 
-
+    /**
+     * Troba usuari per posicio
+     * @param posicio
+     * @return usuari
+     */
     public Usuari StoreData(int posicio)
     {
         return llista[posicio];
     }
 
-
+    /**
+     * getter mida llista
+     * @return nElem
+     */
     public int getnElem()
     {
         return nElem;

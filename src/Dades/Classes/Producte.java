@@ -1,8 +1,10 @@
 package Dades.Classes;
 
 /**
- * Padreada de las gordas pq es la classe pare
- * @authors Miguel Lopes, Ivan Garcia , Pere Escoda i Adrià Sanjuan
+ * Classe producte
+ * 
+ * @author Grup
+ *
  */
 public abstract class Producte {    
 
@@ -11,10 +13,12 @@ public abstract class Producte {
     protected  Data data; 
     protected  String codi;
 
-
     /**
-     * 
-     * 
+     * Constructor producte
+     * @param codi
+     * @param nom
+     * @param descripcio
+     * @param data
      */
     public Producte(String codi, String nom, String descripcio, Data data)
     {
@@ -23,24 +27,41 @@ public abstract class Producte {
         this.descripcio = descripcio;
         this.data = data;
     }
-
+    /**
+     * getter nom
+     * @return nom
+     */
     public String getNom()
     {
         return nom;
     }
-
+    /**
+     * getter descripcio
+     * @return descripcio
+     */
     public String getDescripcio()
     {
         return descripcio;
     }
 
+    /**
+     * getter data
+     * @return data
+     */
     public Data getData()
     {
         return data;
     }
+    /**
+     * getter codi
+     * @return codi
+     */
     public abstract String getCodi();
  
-
+    /**
+     * copia intancias
+     * @return producte
+     */
     public abstract Producte copia();
     
 
@@ -50,5 +71,9 @@ public abstract class Producte {
         return ("NOM: "+getNom()+", Descripció: "+getDescripcio()+", Data: "+getData().toString());
     }
 
+    /**
+     * String maco
+     * @return string
+     */
     public abstract String toStringMaco();
 }

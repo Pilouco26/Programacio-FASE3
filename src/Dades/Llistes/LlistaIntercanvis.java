@@ -4,19 +4,30 @@ import Dades.Classes.Bens;
 import Dades.Classes.Data;
 import Dades.Classes.Intercanvi;
 import Dades.Classes.Usuari;
-
+/**
+ * Classe llista productes
+ * 
+ * @author Grup
+ *
+ */
 public  class LlistaIntercanvis implements Serializable{
     private Intercanvi[] llista;
     private int nElem;
 
-
+    /**
+     * Constructor llista intercanvis
+     * @param mida
+     */
     public LlistaIntercanvis(int mida)
     {
         llista = new Intercanvi[mida];
         nElem = 0;
     }
 
-
+    /**
+     * Afegeix intercanvi
+     * @param intercanvi
+     */
     public void AfegirIntercanvi(Intercanvi i)              // cal ordenarles
     {
 
@@ -37,7 +48,14 @@ public  class LlistaIntercanvis implements Serializable{
             nElem++;
         }
     }
-    
+    /**
+     * Accepta o refusa proposta
+     * @param resposta
+     * @param codi
+     * @param ivaloracio
+     * @param ovaloracio
+     * @param p1
+     */
     public void AcepRefusarIntercanvi(boolean resposta, int codi, int ivaloracio, int ovaloracio, LlistaProductes p1)
     {
         boolean trobat= false;
@@ -79,7 +97,12 @@ public  class LlistaIntercanvis implements Serializable{
         }
 
     }
-
+    /**
+     * Verfica que l'usuari que contesta es el actual
+     * @param codi
+     * @param contesta
+     * @return cert o fals
+     */
     public boolean Verificador(int codi, Usuari contesta)
     {
         int i =0;
@@ -98,7 +121,11 @@ public  class LlistaIntercanvis implements Serializable{
         }
         else return false;
     }
-
+    /**
+     * Troba l'usuari interessat
+     * @param codi
+     * @return usuari
+     */
     public Usuari TrobaInteressat( int codi)
     {
         for(int i = 0; i<llista.length; i++)
@@ -112,7 +139,10 @@ public  class LlistaIntercanvis implements Serializable{
 
 
     }
-
+    /**
+     * getter propostes sense contesta
+     * @return  llista
+     */
     public LlistaIntercanvis getPendents()
     {
         LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
@@ -127,6 +157,10 @@ public  class LlistaIntercanvis implements Serializable{
 
         return aux;
     }
+    /**
+     * getter propostes contesta
+     * @return llista
+     */
     public LlistaIntercanvis getIntercanviades()
     {
         LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
@@ -141,6 +175,10 @@ public  class LlistaIntercanvis implements Serializable{
 
         return aux;
     }
+    /**
+     * getter propostes acceptades
+     * @return llista
+     */
     public LlistaIntercanvis getAcceptades()
     {
         LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
@@ -155,7 +193,10 @@ public  class LlistaIntercanvis implements Serializable{
 
         return aux;
     }
-
+    /**
+     * getter propostes rebutjades
+     * @return llista
+     */
     public LlistaIntercanvis getRebutjades()
     {
         LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
@@ -170,7 +211,11 @@ public  class LlistaIntercanvis implements Serializable{
 
         return aux;
     }
-
+    /**
+     * Troba intercanvis a traves d'usuari
+     * @param alies
+     * @return llista
+     */
     public LlistaIntercanvis TrobaUsuariIntercanvis(String alies)
     {
         LlistaIntercanvis aux = new LlistaIntercanvis(nElem);
@@ -182,12 +227,20 @@ public  class LlistaIntercanvis implements Serializable{
         return aux;
     }
 
-    
 
+    /**
+     * getter mida llista
+     * @return nElem
+     */
     public int getnElem()
     {
         return nElem;
     }
+    /**
+     * getter intercanvi a traves de posicio
+     * @param pos
+     * @return intercanvi
+     */
     public Intercanvi getLlista (int pos) {
         if (pos>=0 && pos<nElem) return llista[pos];
         else return null;
@@ -211,6 +264,10 @@ public  class LlistaIntercanvis implements Serializable{
         }
         
     }
+    /**
+     * to string consola
+     * @return string
+     */
     public String toStringMaco() {
 
         if(nElem==0)

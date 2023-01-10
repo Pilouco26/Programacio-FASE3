@@ -3,19 +3,30 @@ import Dades.Llistes.*;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.util.Scanner;
-
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
 import java.io.*;
 import java.util.*;
 import Dades.Classes.*;
 import Exception.*;
 import Interficie.Interficie;
 
+/**
+ * Programa principal
+ * 
+ * @author Grup
+ *
+ */
 public class ProgramaPrincipal {
     static Scanner teclat = new Scanner(System.in);
- 
+    
+    /**
+     * Main
+     * @param args
+     * @throws FileNotFoundException
+     * @throws AliesNoExisteix
+     * @throws AliesRepetit
+     */
     public static void main(String[] args) throws FileNotFoundException, AliesNoExisteix, AliesRepetit{
         LlistaUsuaris llistaU = new LlistaUsuaris(4000); 
         LlistaProductes llistaP  = new LlistaProductes(4000);
@@ -29,7 +40,12 @@ public class ProgramaPrincipal {
        
 
     }
-
+    /**
+     * Finestra per comprovar alies
+     * @param llistaI
+     * @param llistaP
+     * @param llistaU
+     */
     private static void ProvaFinestra(LlistaIntercanvis llistaI, LlistaProductes llistaP, LlistaUsuaris llistaU)
     {
         boolean acceptat=false; 
@@ -42,7 +58,7 @@ public class ProgramaPrincipal {
 
 				while (!llistaU.TrobaUsuariR(nom)) {
 					// Missatge d'error.
-					JOptionPane.showMessageDialog(null, "JAJAJAJ MARICONA, NO POTS ENTRAR", "ESTEBAN MOJON DETECTED", JOptionPane.ERROR_MESSAGE, alonso);
+					JOptionPane.showMessageDialog(null, "HO SENTO, NO POTS ENTRAR", "ERROR!", JOptionPane.ERROR_MESSAGE, alonso);
 					nom = JOptionPane.showInputDialog("Torna-hi maquina!");
 				}
                 acceptat = true;
@@ -50,7 +66,15 @@ public class ProgramaPrincipal {
         new Interficie("Yessir", llistaI,  llistaP,  llistaU, nom);
 
     }
-
+    /**
+     * Programa principal consola
+     * @param LListaI
+     * @param s2
+     * @param l2
+     * @throws FileNotFoundException
+     * @throws AliesNoExisteix
+     * @throws AliesRepetit
+     */
     private static void ProgramaPrincipal2(LlistaIntercanvis LListaI, LlistaProductes s2, LlistaUsuaris l2) throws FileNotFoundException, AliesNoExisteix, AliesRepetit
     {
         System.out.println(DataActual().toString());
@@ -309,6 +333,11 @@ public class ProgramaPrincipal {
     }
 
     /*MENUS */
+
+    /**
+     * menu principal
+     * @return numero que ha decidit l'usuari
+     */
     private static int menu()
     {
         int limit1 = 1;
@@ -319,6 +348,10 @@ public class ProgramaPrincipal {
         return menu;
     }
 
+     /**
+     * menu usuari
+     * @return numero que ha decidit l'usuari
+     */
     private static int menuUsuari()
     {
         int limit1 = 1;
@@ -328,7 +361,10 @@ public class ProgramaPrincipal {
 
         return menu;
     }
-
+     /**
+     * menu llistes
+     * @return numero que ha decidit l'usuari
+     */
     private static int menuLlistes()
     {
         int limit1=1;
@@ -339,7 +375,10 @@ public class ProgramaPrincipal {
         return llegirEnter(limit1, limit2); 
         
     }
-    
+     /**
+     * menu peticions intercanvi
+     * @return numero que ha decidit l'usuari
+     */
     private static int menuPeticions()
     {
         int limit1=1;
@@ -350,7 +389,10 @@ public class ProgramaPrincipal {
         return llegirEnter(limit1, limit2); 
         
     }
-
+     /**
+     * menu selecio llistes
+     * @return numero que ha decidit l'usuari
+     */
     private static int seleccioLlistes()
     {
         int limit1= 1;
@@ -359,7 +401,10 @@ public class ProgramaPrincipal {
 
         return llegirEnter(limit1, limit2);
     }
-
+     /**
+     * menu intercanvi
+     * @return numero que ha decidit l'usuari
+     */
     private static int menuIntercanvis()
     {
         int limit1= 1;
@@ -381,7 +426,12 @@ public class ProgramaPrincipal {
         }
         }
     
-
+    /**
+     * comprovacio de numero
+     * @param vMin
+     * @param vMax
+     * @return
+     */
     public static int llegirEnter(int vMin, int vMax){                //ampliar amb el rang del menu
 
         boolean llegit= false;
@@ -407,6 +457,14 @@ public class ProgramaPrincipal {
 
         return num;
     }
+    /**
+     * Llegir fitxer
+     * @param i1
+     * @param p1
+     * @param l1
+     * @throws FileNotFoundException
+     * @throws AliesNoExisteix
+     */
     public static void Llegir(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris l1) throws FileNotFoundException, AliesNoExisteix 
     {
         LlegirServeis(p1, DataActual());  
@@ -416,6 +474,13 @@ public class ProgramaPrincipal {
 
 
     }
+    /**
+     * Escriure fitxer
+     * @param i1
+     * @param s1
+     * @param l1
+     * @throws FileNotFoundException
+     */
     public static void Escriure(LlistaIntercanvis i1, LlistaProductes s1, LlistaUsuaris l1) throws FileNotFoundException 
     {
         WriteS(s1);
@@ -423,7 +488,10 @@ public class ProgramaPrincipal {
         WriteI(i1); //Necessita petits tweaks
         storeData(l1);
     }
-
+    /**
+     * obtenir data actual
+     * @return data d'avui
+     */
     public static Data DataActual()
     {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -436,11 +504,15 @@ public class ProgramaPrincipal {
     }
 
 
-
+    /**
+     * Llegir bens
+     * @param s1
+     * @throws FileNotFoundException
+     */
     public static void LlegirBens(LlistaProductes s1) throws FileNotFoundException
     {
     
-        File fitxerB = new File("bens.txt");
+        File fitxerB = new File("Practica3/bens.txt");
         Scanner fileB = new Scanner(fitxerB);
         while(fileB.hasNextLine())
         {
@@ -451,11 +523,17 @@ public class ProgramaPrincipal {
         }
         fileB.close(); 
     }
-    
+    /**
+     * Llegir bens
+     * @param s1
+     * @param data
+     * @return llista
+     * @throws FileNotFoundException
+     */
     public static LlistaProductes LlegirBensR(LlistaProductes s1, Data data) throws FileNotFoundException
     {
     
-        File fitxerB = new File("bens.txt");
+        File fitxerB = new File("Practica3/bens.txt");
         Scanner fileB = new Scanner(fitxerB);
         while(fileB.hasNextLine())
         {
@@ -468,10 +546,16 @@ public class ProgramaPrincipal {
 
         return s1;
     }
+    /**
+     * llegir serveis
+     * @param s1
+     * @param actual
+     * @throws FileNotFoundException
+     */
     public static void LlegirServeis(LlistaProductes s1, Data actual) throws FileNotFoundException{
 
        
-        File fitxerS = new File("servei.txt");
+        File fitxerS = new File("Practica3/servei.txt");
         Scanner fileS = new Scanner(fitxerS);
         while(fileS.hasNextLine())
         {
@@ -483,10 +567,17 @@ public class ProgramaPrincipal {
         }
         fileS.close();   
     }
+    /**
+     * llegir productes
+     * @param s1
+     * @param actual
+     * @return llista
+     * @throws FileNotFoundException
+     */
     public static LlistaProductes LlegirProductesR(LlistaProductes s1, Data actual) throws FileNotFoundException{
 
        
-        File fitxerS = new File("servei.txt");
+        File fitxerS = new File("Practica3/servei.txt");
         Scanner fileS = new Scanner(fitxerS);
         while(fileS.hasNextLine())
         {
@@ -497,7 +588,7 @@ public class ProgramaPrincipal {
 
         }
         fileS.close();  
-        File fitxerB = new File("bens.txt");
+        File fitxerB = new File("Practica3/bens.txt");
         Scanner fileB = new Scanner(fitxerB);
         while(fileB.hasNextLine())
         {
@@ -509,10 +600,17 @@ public class ProgramaPrincipal {
         fileB.close(); 
         return s1;
     }
-
+    /**
+     * llegir intercanvis
+     * @param i1
+     * @param p1
+     * @param u1
+     * @throws FileNotFoundException
+     * @throws AliesNoExisteix
+     */
     public static void LlegirIntercanvis(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris u1) throws FileNotFoundException, AliesNoExisteix{
 
-        File fitxerS = new File("intercanvis.txt");
+        File fitxerS = new File("Practica3/intercanvis.txt");
         Scanner fileS = new Scanner(fitxerS);
         while(fileS.hasNextLine())
         {
@@ -525,9 +623,18 @@ public class ProgramaPrincipal {
 
 
     }
+    /**
+     * llegir intercanvis
+     * @param i1
+     * @param p1
+     * @param u1
+     * @return llista
+     * @throws FileNotFoundException
+     * @throws AliesNoExisteix
+     */
     public static LlistaIntercanvis LlegirIntercanvisR(LlistaIntercanvis i1, LlistaProductes p1, LlistaUsuaris u1) throws FileNotFoundException, AliesNoExisteix{
 
-        File fitxerS = new File("intercanvis.txt");
+        File fitxerS = new File("Practica3/intercanvis.txt");
         Scanner fileS = new Scanner(fitxerS);
         while(fileS.hasNextLine())
         {
@@ -542,7 +649,11 @@ public class ProgramaPrincipal {
     }
 
     /*AFEGIR USUARIS, PRODUCTES I INTERCANVIS */
-
+    /**
+     * afegir producte main
+     * @param l1
+     * @return producte
+     */
     public  static Producte AfegirProducteS(LlistaProductes l1)
     {
         System.out.println("Afegir servei:");
@@ -562,6 +673,11 @@ public class ProgramaPrincipal {
 
 
     }
+        /**
+     * afegir producte be
+     * @param l1
+     * @return producte
+     */
     public static Producte AfegirProducteB(LlistaProductes s1)
     {
         System.out.println("Afegir Bé:");
@@ -582,6 +698,11 @@ public class ProgramaPrincipal {
 
 
     }
+    /**
+     * afegir intercanvi main
+     * @param l1
+     * @return intercavnvi
+     */
     public static Intercanvi AfegirIntercanvi(LlistaUsuaris u1, LlistaProductes p1) throws AliesNoExisteix
     {
         System.out.println("Qui ets?");
@@ -610,7 +731,13 @@ public class ProgramaPrincipal {
         return i;
 
     }
-
+    /**
+     * Constesta peticio
+     * @param u1
+     * @param l1
+     * @param s1
+     * @throws AliesNoExisteix
+     */
     public static void Contestar(LlistaUsuaris u1, LlistaIntercanvis l1, LlistaProductes s1) throws AliesNoExisteix
     {
         System.out.println("\nIndicador del intercanvi que vols contestar");
@@ -635,7 +762,11 @@ public class ProgramaPrincipal {
         else System.out.println("Les dades que has introduit no corresponen amb la realitat :/");
 
     }
-
+    /**
+     * Afegir usuari main
+     * @return  usuari
+     * @throws AliesRepetit
+     */
     public static Usuari AfegirUsuari() throws AliesRepetit
     {
         System.out.println("Alies:");
@@ -650,7 +781,12 @@ public class ProgramaPrincipal {
 
 
     /*LLEGIR FITXERS */
-
+    /**
+     * llegir producte 
+     * @param fileS
+     * @param tipus
+     * @return producte
+     */
     public static Producte ReadP(Scanner fileS, int tipus)
     {
         String codi, nom, descripcio, servei;
@@ -710,12 +846,17 @@ public class ProgramaPrincipal {
     }
 
 
-
+    /**
+     * Escriure Servei 
+     * @param fileS
+     * @param tipus
+     * @return servei
+     */
     public static void WriteS(LlistaProductes s1)
     {
         BufferedWriter bw = null;
         try{    
-        File fitxerSC = new File("servei.txt");
+        File fitxerSC = new File("Practica3/servei.txt");
         FileWriter fw = new FileWriter(fitxerSC);
         bw = new BufferedWriter(fw);
         bw.write(s1.GetServeis().toString());                                    /* S'HA D'ESCRIURE NOMÉS LA MERDA DELS SERVEIS */
@@ -735,12 +876,17 @@ public class ProgramaPrincipal {
             }
         }
     }
-
+    /**
+     * Escriure Bens 
+     * @param fileS
+     * @param tipus
+     * @return bens
+     */
     public static void WriteB(LlistaProductes s1)
     {
         BufferedWriter bw = null;
         try{    
-        File fitxerSC = new File("bens.txt");
+        File fitxerSC = new File("Practica3/bens.txt");
         FileWriter fw = new FileWriter(fitxerSC);
         bw = new BufferedWriter(fw);
         bw.write(s1.GetBens().toString());                  //FALTA ESCRIURE LA DATA DEL INTERCANVIAT                                   
@@ -760,12 +906,15 @@ public class ProgramaPrincipal {
             }
         }
     }
-
+    /**
+     * Escriure intercanvi
+     * @param intercanvi
+     */
     public static void WriteI(LlistaIntercanvis i1)
     {
         BufferedWriter bw = null;
         try{    
-        File fitxerSC = new File("intercanvis.txt");
+        File fitxerSC = new File("Practica3/intercanvis.txt");
         FileWriter fw = new FileWriter(fitxerSC);
         bw = new BufferedWriter(fw);
         bw.write(i1.toString());                                   
@@ -785,7 +934,14 @@ public class ProgramaPrincipal {
             }
         }
     }
-
+    /**
+     * llegir intercanvi de fitxer
+     * @param FileI
+     * @param p1
+     * @param u1 
+     * @return intercanvi
+     * @throws AliesNoExisteix
+     */
     public static Intercanvi ReadI(Scanner FileI, LlistaProductes p1, LlistaUsuaris u1) throws AliesNoExisteix
     {
         int codi, ivaloracio, ovaloracio;
@@ -821,11 +977,14 @@ public class ProgramaPrincipal {
 
        
     }
-
+    /**
+     * escriure llista usuari
+     * @param list
+     */
      public static void storeData (LlistaUsuaris list) {
                 ObjectOutputStream outputFile;
                 try {
-                outputFile = new ObjectOutputStream(new FileOutputStream("Usuari.ser"));
+                outputFile = new ObjectOutputStream(new FileOutputStream("Practica3/Usuari.ser"));
                 for (int i=0; i<list.getnElem(); i++) {
                 outputFile.writeObject(list.StoreData(i));
                 }
@@ -836,11 +995,14 @@ public class ProgramaPrincipal {
                 }
     
              }
-
+             /**
+              * llegir usuaris
+              * @param list
+              */
     public static void readData (LlistaUsuaris list) {
                 ObjectInputStream inputFile;
                 try {
-                inputFile = new ObjectInputStream(new FileInputStream("Usuari.ser"));
+                inputFile = new ObjectInputStream(new FileInputStream("Practica3/Usuari.ser"));
                 for (int i=0; i<4000; i++) {                                                //FALTA ARREGLAR AIXÓ, POSARLI TRY CATCH
                 try {
                     list.AfegirUsuari((Usuari)inputFile.readObject());
@@ -861,10 +1023,15 @@ public class ProgramaPrincipal {
                 System.out.println("Error, el format de l'arxiu no és correcte per la definició actual de la classe Usuari."+e);
                 }
     }
+    /**
+     * llegir usuari main
+     * @param list
+     * @return llista
+     */
     public static LlistaUsuaris readDataR (LlistaUsuaris list) {
         ObjectInputStream inputFile;
         try {
-        inputFile = new ObjectInputStream(new FileInputStream("Usuari.ser"));
+        inputFile = new ObjectInputStream(new FileInputStream("Practica3/Usuari.ser"));
         for (int i=0; i<4000; i++) {                                                //FALTA ARREGLAR AIXÓ, POSARLI TRY CATCH
         try {
             list.AfegirUsuari((Usuari)inputFile.readObject());
@@ -890,7 +1057,12 @@ public class ProgramaPrincipal {
 
 
     /*Generació aleatoria de codis */
-
+    /**
+     * comprova si el codi esta repetit
+     * @param l1
+     * @param codi
+     * @return cert o fals
+     */
      public static boolean GenRepetit(LlistaProductes l1, String codi)
     {
         boolean repetit=false;
@@ -902,7 +1074,11 @@ public class ProgramaPrincipal {
         }
         return repetit;
     }
-            
+    /**
+     * genera codi producte
+     * @param l1
+     * @return string
+     */
     public static String GenCodiProducte(LlistaProductes l1) {
         int leftLimit = 65; // letter 'A'
         int rightLimit = 90; // letter 'Z'
@@ -924,7 +1100,10 @@ public class ProgramaPrincipal {
         
         return generatedString;                         //FALTA MIRAR QUE NO ESTIGUI REPETIT
     }
-
+    /**
+     * genera codi intercanvi
+     * @return codi
+     */
     public static int GenCodiIntercanvi()
     {
         int min =0;

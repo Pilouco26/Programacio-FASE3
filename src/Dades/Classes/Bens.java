@@ -1,5 +1,10 @@
 package Dades.Classes;
-
+/**
+ * Classe bens
+ * 
+ * @author Grup
+ *
+ */
 public final class Bens extends Producte {
     
     private double ampladaCM;
@@ -30,7 +35,10 @@ public final class Bens extends Producte {
         Data_intercanvi= null;
 
     }
-
+    /**
+     * Getter codi
+     * @return codi
+     */
     public  String getCodi()
     {
         return codi;
@@ -89,12 +97,18 @@ public final class Bens extends Producte {
     public void Intercanviat(){
         intercanvi = true;
     }
-
+        /**´
+     * Cambia el estat del item, ara ja ha estat intercanviat
+     * @param estat intercanvi
+     */
     public void setIntercanvi(boolean intercanvi)
     {
         this.intercanvi = intercanvi;
     }
-
+    /**´
+     * Cambia la data , 
+     * @param data
+     */
     public void setData(Data data)
     {
         this.Data_intercanvi = data;
@@ -106,21 +120,34 @@ public final class Bens extends Producte {
     public Bens copia(){
         return new Bens(getCodi(), getNom(), getDescripcio(), getData(), ampladaCM, alçadaCM, fonsCM, pesKG);
     }
-
+    /**
+     * ToString per la consola en cas de que el producte no ha estat intercanviat
+     * @return  string 
+     */
     public String toStringMacoFalse()
     {
         return "Nom: "+nom+", Descripció: "+descripcio+", Està disponible per intercanvi des-de: "+data;
     }
+        /**
+     * ToString per la consola en cas de que el producte  ha estat intercanviat
+     * @return  string 
+     */
     public String toStringMaco()
     {
         return "Nom: "+nom+", Descripció: "+descripcio+", Data inicial: "+data+ ", No està disponible per intercanvis, va ser intercanviat el : "+Data_intercanvi.toString();
     }
+    /**
+     *  To String per els fitxers
+     */
     @Override
     public String toString()
     {
         return codi+";"+nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi+";"+Data_intercanvi.toString();
     }
-
+     /**
+     *  To String per els fitxers
+     * @return string
+     */
     public String toStringFalse()
     {
         return codi+";"+nom+";"+descripcio+";"+data+";"+ampladaCM+";"+alçadaCM+";"+fonsCM+";"+pesKG+";"+intercanvi;
